@@ -8,7 +8,7 @@ import { setWorkerUrl } from 'maplibre-gl';
 import maplibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import { MapboxOverlay } from '@deck.gl/mapbox';
 import type { MapboxOverlayProps } from '@deck.gl/mapbox';
-import { ArcLayer, PathLayer, ScatterplotLayer } from '@deck.gl/layers';
+import { ArcLayer, IconLayer, PathLayer, ScatterplotLayer } from '@deck.gl/layers';
 import { PathStyleExtension } from '@deck.gl/extensions';
 import type { PathStyleExtensionProps } from '@deck.gl/extensions';
 import type { PickingInfo } from '@deck.gl/core';
@@ -35,6 +35,19 @@ interface LegDatum {
 }
 
 const dashed = new PathStyleExtension({ dash: true });
+
+// Planned / under-construction sites: a broken ring with an empty centre, so they read as "not there
+// yet" next to the filled dots of operating sites. White SVG + mask lets deck.gl tint it by role.
+const PLANNED_RING = {
+  id: 'planned-ring',
+  url: `data:image/svg+xml;charset=utf-8,${encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><circle cx="32" cy="32" r="24" ' +
+      'fill="none" stroke="white" stroke-width="9" stroke-dasharray="11 9"/></svg>',
+  )}`,
+  width: 64,
+  height: 64,
+  mask: true,
+};
 
 // Longitude frame. When the shown places span less of the globe across the Pacific than across the
 // Atlantic (Taiwan + Arizona, say), move the western hemisphere by +360° so the view centres on the
@@ -94,9 +107,20 @@ function specificLayers(data: SpecificMap, frame: LonFrame, select: (s: Selectio
       getFillColor: [226, 232, 240],
       pickable: true,
     }),
+    new IconLayer<MapSite>({
+      id: 'planned-sites',
+      data: data.sites.filter((s) => s.planned),
+      getPosition: (s) => [frame.lon(s.lon), s.lat],
+      getIcon: () => PLANNED_RING,
+      getSize: (s) => (s.role === 'focus' ? 26 : 22),
+      sizeUnits: 'pixels',
+      getColor: (s) => ROLE_COLORS[s.role],
+      pickable: true,
+      onClick: ({ object }) => object && select({ kind: 'site', site: object }),
+    }),
     new ScatterplotLayer<MapSite>({
       id: 'sites',
-      data: data.sites,
+      data: data.sites.filter((s) => !s.planned),
       getPosition: (s) => [frame.lon(s.lon), s.lat],
       getRadius: (s) => (s.role === 'focus' ? 9 : 6),
       radiusUnits: 'pixels',
@@ -150,6 +174,7 @@ function tooltip({ object, layer }: PickingInfo) {
   if (!object || !layer) return null;
   switch (layer.id) {
     case 'sites':
+    case 'planned-sites':
       return `${object.name}\n${object.operators.map((o: { name: string }) => o.name).join(' / ')}`;
     case 'hubs':
       return object.name;
@@ -175,12 +200,14 @@ export default function MapView({
   focus,
   mode,
   context,
+  history,
   showCustomers,
   onShowCustomersChange,
 }: {
   focus: PathEntry;
   mode: Mode;
   context?: string;
+  history: boolean;
   showCustomers: boolean;
   onShowCustomersChange: (on: boolean) => void;
 }) {
@@ -195,15 +222,15 @@ export default function MapView({
     setSelection(null);
     const request =
       mode === 'specific'
-        ? fetchMap(focus.id, 'specific', context, showCustomers).then((map) => ({ mode: 'specific' as const, map }))
-        : fetchMap(focus.id, 'general', context, showCustomers).then((map) => ({ mode: 'general' as const, map }));
+        ? fetchMap(focus.id, 'specific', context, showCustomers, history).then((map) => ({ mode: 'specific' as const, map }))
+        : fetchMap(focus.id, 'general', context, showCustomers, history).then((map) => ({ mode: 'general' as const, map }));
     request
       .then((d) => !cancelled && setData(d))
       .catch(() => !cancelled && setError('Could not load the map for this node.'));
     return () => {
       cancelled = true;
     };
-  }, [focus.id, mode, context, showCustomers]);
+  }, [focus.id, mode, context, showCustomers, history]);
 
   const places = useMemo(
     () => (!data ? [] : data.mode === 'specific' ? data.map.sites : data.map.countries),
@@ -231,7 +258,7 @@ export default function MapView({
   // Runs when new data arrives, and on map load in case the data came first.
   const fitToData = useCallback(() => {
     // Extra padding on the right and bottom keeps sites clear of the side panel and legend.
-    const padding = { top: 60, left: 50, right: 340, bottom: 110 };
+    const padding = { top: 60, left: 50, right: 340, bottom: 140 };
     if (bounds && mapRef.current) mapRef.current.fitBounds(bounds, { padding, maxZoom: 7, duration: 800 });
   }, [bounds]);
 
@@ -293,6 +320,7 @@ function MapLegend() {
         <span key={m}><i className="bar" style={{ background: rgb(MODE_COLORS[m]) }} />{m}</span>
       ))}
       <span><i className="bar dashed" />low confidence</span>
+      <span><i className="ring-planned" />planned site</span>
       <span><i className="chokepoint mini">!</i>chokepoint</span>
       <span><i className="chokepoint mini affected">!</i>affected</span>
     </div>

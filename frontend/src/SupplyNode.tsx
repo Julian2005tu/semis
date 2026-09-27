@@ -11,19 +11,22 @@ export type SupplyNodeData = {
   eventCount?: number;
   siteCount?: number; // specific mode only: production sites shown in Map mode
   delay?: number; // staggers the entry animation
+  look?: 'planned' | 'historical'; // set when the node has no current edge into the focus
   onClick?: () => void; // absent in general mode: roles aren't nodes you can drill into
   onShowEvents?: () => void;
+  onShowInfo?: () => void; // focus node only: opens the info panel
 };
 
 // Clicks inside the tooltip or on the badge must not also trigger the node's drill-down click.
 const stop = (e: MouseEvent) => e.stopPropagation();
 
 export default function SupplyNode({ data }: NodeProps<Node<SupplyNodeData>>) {
-  const { title, subtitle, isFocus, edges, eventCount, siteCount, delay = 0, onClick, onShowEvents } = data;
+  const { title, subtitle, isFocus, edges, eventCount, siteCount, delay = 0, look, onClick, onShowEvents, onShowInfo } =
+    data;
 
   return (
     <div
-      className={`supply-node ${isFocus ? 'focus' : ''} ${onClick ? 'clickable' : ''}`}
+      className={`supply-node ${isFocus ? 'focus' : ''} ${onClick ? 'clickable' : ''} ${look ?? ''}`}
       style={{ animationDelay: `${delay}ms` }}
       onClick={onClick}
     >
@@ -32,6 +35,20 @@ export default function SupplyNode({ data }: NodeProps<Node<SupplyNodeData>>) {
       {subtitle && <div className="supply-node-subtitle">{subtitle}</div>}
       {!!siteCount && <span className="site-chip">{siteCount} site{siteCount === 1 ? '' : 's'}</span>}
       <Handle type="source" position={Position.Right} className="hidden-handle" />
+
+      {onShowInfo && (
+        <button
+          className="info-button"
+          title="Details: capex, investments, sites"
+          aria-label="Show details"
+          onClick={(e) => {
+            stop(e);
+            onShowInfo();
+          }}
+        >
+          ⓘ
+        </button>
+      )}
 
       {!!eventCount && onShowEvents && (
         <button
@@ -50,7 +67,10 @@ export default function SupplyNode({ data }: NodeProps<Node<SupplyNodeData>>) {
         <div className="supply-tooltip nowheel" onClick={stop}>
           {edges.map((edge, i) => (
             <div key={i} className="supply-tooltip-row">
-              <div className="supply-tooltip-item">{edge.item ?? edge.type.replace('_', ' ').toLowerCase()}</div>
+              <div className="supply-tooltip-item">
+                {edge.item ?? edge.type.replace('_', ' ').toLowerCase()}
+                {edge.status !== 'active' && <span className={`status-badge ${edge.status}`}>{edge.status}</span>}
+              </div>
               {edge.share_estimate && <div>Share: {edge.share_estimate}</div>}
               <div>Confidence: <span className={`conf conf-${edge.confidence}`}>{edge.confidence ?? 'n/a'}</span></div>
               {edge.source_url && (

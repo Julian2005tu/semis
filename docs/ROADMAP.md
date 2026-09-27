@@ -31,16 +31,21 @@ disruption somewhere upstream is likely to hit a product downstream, including s
 - [x] Generic one-hop upstream endpoint with `context` filter and server-enforced General mode
 - [x] Left-to-right drill-down UI with breadcrumb, confidence styling, source tooltips, event badges
 - [x] Map mode (task 002): production sites, shipment lanes, hubs and chokepoints on a world map
+- [x] Relationship status, history toggle and node info panel with operator capex (task 003)
 
-### Phase 2 — Data coverage · *started (run1 done)*
+### Phase 2 — Data coverage · *in progress (runs 1-3 done)*
 Each run is a new `data/seed/runN/` folder with its own `seed_run` tag.
 - [x] Run 1: Datacenter/AI vertical, GPU chain deep (Sept 2026)
 - [x] Run 2: production sites and logistics lanes (Sept 2026)
-- [ ] Verify the 56 `low` confidence edges from run 1
-- [ ] Go vertical: deepen HBM (DRAM fab tools, TSV, hybrid bonding) and EUV (Zeiss/Trumpf sub-suppliers, masks, pellicles)
-- [ ] Go horizontal: same depth for server CPU, networking/optics, enterprise SSD
+- [x] Run 3: depth pass across every stage of the Datacenter/AI chain (Sept 2026)
+- [~] Verify the 56 `low` confidence edges from run 1 — *partially*: 25 of 56 upgraded in run 3; 31 remain
+- [~] Go vertical: deepen HBM and EUV — *partially* in run 3: HBM4 testers, ASML module suppliers
+  (VDL ETG, Prodrive, Neways), EUV pellicles, mask blanks/inspection/writers; TSV and hybrid bonding still open
+- [~] Go horizontal: server CPU, networking/optics, enterprise SSD — *partially* in run 3 (Cobalt 200,
+  BMC, power chips, test and probe cards); optics and SSD depth still open
+- [ ] Run 4: remaining low-confidence edges + gaps listed in run3/README
 - [ ] Second vertical: Automotive (MCUs, power, analog) — first real cross-vertical overlap query
-- [ ] Gaps: China's domestic AI chips (Huawei Ascend, Cambricon, SMIC), server/rack ODMs, datacenter operators and capex
+- [x] Gaps: China's domestic AI chips (Huawei Ascend, Cambricon, SMIC), server/rack ODMs, datacenter operators and capex (run 3)
 
 ### Phase 3 — Prices and influence
 - [ ] TimescaleDB with price series for key materials and chips; link via `RawMaterial.price_series`
@@ -49,6 +54,8 @@ Each run is a new `data/seed/runN/` folder with its own `seed_run` tag.
 - [ ] Geopolitical layer: export controls, concentration by country
 
 ### Phase 4 — Early warning
+First labels exist: since run 3, `DisruptionEvent` nodes include 10 resolved historical events (2011–2024:
+Tōhoku quake, Japan–Korea chemicals controls, Texas freeze, Renesas fire, Ukraine neon, …).
 - [ ] Anomaly detection per series (rolling z-scores, changepoints)
 - [ ] Shock-propagation simulator over weighted edges (explainable: shows the path that fired)
 - [ ] `risk_score` on nodes, shown as a heat overlay in the same navigator

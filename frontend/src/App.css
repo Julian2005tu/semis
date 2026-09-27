@@ -218,8 +218,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  padding: 15px 25px;
+  gap: 14px;
+  padding: 12px 18px;
   background: var(--code-bg);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -241,7 +241,8 @@
 
 /* Dropdown styling */
 .chip-select {
-  padding: 8px 16px;
+  max-width: 200px;
+  padding: 8px 12px;
   font-size: 14px;
   font-family: var(--sans);
   border: 1px solid var(--border);
@@ -724,7 +725,7 @@ input:checked + .slider:before {
 .map-legend {
   top: auto;
   bottom: 10px;
-  max-width: 330px;
+  max-width: 560px;
   flex-wrap: wrap;
   gap: 4px 12px;
 }
@@ -849,4 +850,131 @@ input:checked + .slider:before {
 .status-ongoing,
 .sev-high {
   background: rgba(220, 38, 38, 0.15);
+}
+
+/* Task 003: status, history, info */
+.status-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 5px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  vertical-align: middle;
+}
+
+.status-badge.planned {
+  border: 1px dotted #94a3b8;
+  color: #94a3b8;
+}
+
+.status-badge.historical {
+  background: rgba(100, 116, 139, 0.25);
+  color: #94a3b8;
+}
+
+/* Nodes whose only link to the focus is planned or has ended */
+.supply-node.planned {
+  border-style: dashed;
+}
+
+.supply-node.historical {
+  opacity: 0.45;
+  filter: grayscale(1);
+}
+
+.history-toggle {
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text-h);
+  cursor: pointer;
+}
+
+.info-button {
+  position: absolute;
+  top: -9px;
+  left: -9px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--code-bg);
+  background: #f8fafc;
+  color: #1e3a8a;
+  font-size: 13px;
+  line-height: 15px;
+  cursor: pointer;
+}
+
+.info-panel {
+  width: min(460px, 100vw);
+}
+
+.info-panel .panel-row {
+  grid-template-columns: 130px 1fr;
+  font-size: 14px;
+}
+
+.info-description {
+  margin: 10px 0;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.info-section {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.info-section h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  color: var(--text-h);
+}
+
+.info-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.info-list li {
+  margin-bottom: 6px;
+}
+
+.info-panel a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.info-table th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  padding: 4px 6px 4px 0;
+}
+
+.info-table td {
+  padding: 5px 6px 5px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-h);
+  vertical-align: top;
+}
+
+.map-legend .ring-planned {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px dashed #94a3b8;
 }

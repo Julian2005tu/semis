@@ -3,6 +3,7 @@ from typing import Optional
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from db.neo4j_client import neo4j_client
+import info_view
 import map_view
 import uvicorn
 from dotenv import load_dotenv
@@ -42,13 +43,17 @@ async def get_node_upstream(
     node_id: str,
     mode: str = Query("specific", pattern="^(specific|general)$"),
     context: Optional[str] = Query(None, description="ChipType id; keeps only inputs meant for that chip type"),
+    include_history: bool = Query(False, description="also return edges with status 'historical'"),
 ):
     """
-    Exactly one hop of supply-flow inputs into the focus node.
+    Exactly one hop of supply-flow inputs into the focus node. Current and planned edges are returned;
+    historical ones only with include_history; retracted ones never.
 
-    specific: one entry per upstream node with every edge into the focus (item, share, confidence, source).
-    general:  one entry per role with a supplier count. The response is built from an allowlist of keys,
-              so no company name, id or source URL can reach the client — not even the focus node's.
+    specific: one entry per upstream node with every edge into the focus (item, status, share, confidence,
+              source), so parallel edges (TSMC → Nvidia for wafers and CoWoS) stay on one node.
+    general:  one entry per role with supplier / planned / historical counts. The response is built from an
+              allowlist of keys, so no company name, id or source URL can reach the client — not even the
+              focus node's.
     """
     focus = await neo4j_client.get_focus(node_id)
     if focus is None:
@@ -57,16 +62,18 @@ async def get_node_upstream(
     if mode == "specific":
         return {
             "focus": focus,
-            "upstream": await neo4j_client.get_upstream_specific(node_id, context),
+            "upstream": await neo4j_client.get_upstream_specific(node_id, context, include_history),
         }
 
-    roles = await neo4j_client.get_upstream_general(node_id, context)
+    roles = await neo4j_client.get_upstream_general(node_id, context, include_history)
     return {
         "focus": {"label": focus["label"], "category": focus["category"]},
         "upstream": [
             {
                 "role": row["role"],
                 "supplier_count": row["supplier_count"],
+                "planned_count": row["planned_count"],
+                "historical_count": row["historical_count"],
                 "confidences": [c for c in CONFIDENCE_ORDER if c in row["confidences"]],
             }
             for row in roles
@@ -79,6 +86,7 @@ async def get_node_map(
     mode: str = Query("specific", pattern="^(specific|general)$"),
     context: Optional[str] = Query(None, description="ChipType id; same filter as the drill-down"),
     include_customers: bool = False,
+    include_history: bool = Query(False, description="also use 'historical' edges to pick companies"),
 ):
     """
     Production sites of the focus (a Company or ChipType) and its current suppliers, plus the shipment
@@ -90,7 +98,8 @@ async def get_node_map(
     if focus["label"] not in ("Company", "ChipType"):
         raise HTTPException(status_code=400, detail="Map mode is available for companies and chip types only")
 
-    candidates = await neo4j_client.get_map_companies(node_id, focus["label"], context, include_customers)
+    candidates = await neo4j_client.get_map_companies(node_id, focus["label"], context, include_customers,
+                                                   include_history)
     companies = map_view.company_set(focus, candidates)
     lanes = await neo4j_client.get_map_lanes(list(companies), context)
     endpoint_sites = sorted({row["from_site"] for row in lanes} | {row["to_site"] for row in lanes})
@@ -98,6 +107,19 @@ async def get_node_map(
 
     specific = map_view.build_specific(focus, companies, sites, lanes)
     return specific if mode == "specific" else map_view.to_general(specific)
+
+@app.get("/node/{node_id}/info")
+async def get_node_info(node_id: str, mode: str = Query("specific", pattern="^(specific|general)$")):
+    """
+    Facts about one node for the info panel: its own fields, site count, active events, capex
+    (OPERATES_IN), investments (INVESTS_IN) and, for an end market, its operators sorted by capex.
+    General mode keeps only category, country and counts (see info_view.to_general).
+    """
+    info = await neo4j_client.get_info(node_id)
+    if info is None:
+        raise HTTPException(status_code=404, detail="Node not found")
+    specific = info_view.build_specific(info)
+    return specific if mode == "specific" else info_view.to_general(specific)
 
 @app.get("/node/{node_id}/events")
 async def get_node_events(node_id: str):

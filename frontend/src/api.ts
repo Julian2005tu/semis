@@ -4,6 +4,8 @@ const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000';
 
 export type Mode = 'specific' | 'general';
 export type Confidence = 'high' | 'medium' | 'low';
+// Retracted edges never reach the client; historical ones only with include_history.
+export type EdgeStatus = 'active' | 'planned' | 'historical';
 
 export interface Vertical {
   id: string;
@@ -15,6 +17,7 @@ export interface SupplyEdge {
   type: string;
   item: string | null;
   item_category: string | null;
+  status: EdgeStatus;
   share_estimate: string | null;
   confidence: Confidence | null;
   source_url: string | null;
@@ -38,7 +41,9 @@ export interface SpecificResponse {
 // General mode: the server sends roles and counts only — no names, ids or URLs.
 export interface GeneralUpstream {
   role: string;
-  supplier_count: number;
+  supplier_count: number; // suppliers with a current edge in this role
+  planned_count: number; // suppliers whose only edges in this role are planned
+  historical_count: number; // ... only historical (0 unless include_history)
   confidences: Confidence[];
 }
 
@@ -72,10 +77,65 @@ function cachedGet<T>(path: string, params: Record<string, string | undefined> =
 
 export const fetchVerticals = () => cachedGet<Vertical[]>('/verticals');
 
-export function fetchUpstream(id: string, mode: 'specific', context?: string): Promise<SpecificResponse>;
-export function fetchUpstream(id: string, mode: 'general', context?: string): Promise<GeneralResponse>;
-export function fetchUpstream(id: string, mode: Mode, context?: string) {
-  return cachedGet(`/node/${encodeURIComponent(id)}/upstream`, { mode, context });
+const flag = (on: boolean) => (on ? 'true' : undefined);
+
+export function fetchUpstream(id: string, mode: 'specific', context?: string, history?: boolean): Promise<SpecificResponse>;
+export function fetchUpstream(id: string, mode: 'general', context?: string, history?: boolean): Promise<GeneralResponse>;
+export function fetchUpstream(id: string, mode: Mode, context?: string, history = false) {
+  return cachedGet(`/node/${encodeURIComponent(id)}/upstream`, { mode, context, include_history: flag(history) });
+}
+
+// --- Node info (capex, investments, operators) ---
+
+export interface Investment {
+  id: string;
+  name: string;
+  item: string | null;
+  amount_usd_bn: string | null;
+  date: string | null;
+  source_url: string | null;
+}
+
+export interface Capex {
+  capex_usd_bn: string | null;
+  capex_period: string | null;
+  capex_as_of: string | null;
+  source_url: string | null;
+}
+
+export interface SpecificInfo {
+  id: string;
+  label: string;
+  name: string;
+  category: string | null;
+  country: string | null;
+  ticker: string | null;
+  description: string | null;
+  site_count: number;
+  events: DisruptionEvent[];
+  capex: (Capex & { vertical_id: string; vertical: string })[];
+  investments_out: Investment[];
+  investments_in: Investment[];
+  operators?: (Capex & { id: string; name: string; category: string | null })[]; // end markets only
+}
+
+// General mode: category, country and counts only.
+export interface GeneralInfo {
+  label: string;
+  category: string | null;
+  country: string | null;
+  site_count: number;
+  event_count: number;
+  has_capex: boolean;
+  investments_out_count: number;
+  investments_in_count: number;
+  operator_count?: number;
+}
+
+export function fetchInfo(id: string, mode: 'specific'): Promise<SpecificInfo>;
+export function fetchInfo(id: string, mode: 'general'): Promise<GeneralInfo>;
+export function fetchInfo(id: string, mode: Mode) {
+  return cachedGet(`/node/${encodeURIComponent(id)}/info`, { mode });
 }
 
 export const fetchEvents = (id: string) =>
@@ -112,6 +172,7 @@ export interface MapSite {
   source_url: string | null;
   operators: CompanyRef[];
   role: MapRole;
+  planned: boolean; // status starts with "planned" / "under construction"
   events: DisruptionEvent[];
 }
 
@@ -183,12 +244,13 @@ export interface GeneralMap {
   unmapped_count: number;
 }
 
-export function fetchMap(id: string, mode: 'specific', context?: string, includeCustomers?: boolean): Promise<SpecificMap>;
-export function fetchMap(id: string, mode: 'general', context?: string, includeCustomers?: boolean): Promise<GeneralMap>;
-export function fetchMap(id: string, mode: Mode, context?: string, includeCustomers = false) {
+export function fetchMap(id: string, mode: 'specific', context?: string, includeCustomers?: boolean, history?: boolean): Promise<SpecificMap>;
+export function fetchMap(id: string, mode: 'general', context?: string, includeCustomers?: boolean, history?: boolean): Promise<GeneralMap>;
+export function fetchMap(id: string, mode: Mode, context?: string, includeCustomers = false, history = false) {
   return cachedGet(`/node/${encodeURIComponent(id)}/map`, {
     mode,
     context,
-    include_customers: includeCustomers ? 'true' : undefined,
+    include_customers: flag(includeCustomers),
+    include_history: flag(history),
   });
 }

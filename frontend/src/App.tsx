@@ -1,6 +1,7 @@
 import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import GraphView from './GraphView';
 import EventsPanel from './EventsPanel';
+import InfoPanel from './InfoPanel';
 import { fetchVerticals } from './api';
 import type { Mode, Vertical } from './api';
 import './App.css';
@@ -30,7 +31,10 @@ function App() {
   const [mode, setMode] = useState<Mode>('specific');
   const [view, setView] = useState<'graph' | 'map'>('graph');
   const [showCustomers, setShowCustomers] = useState(false);
-  const [eventsFor, setEventsFor] = useState<PathEntry | null>(null);
+  // Off by default: ended relationships (e.g. TSMC's die bank for Huawei) only appear, greyed, when on.
+  const [showHistory, setShowHistory] = useState(false);
+  // One side panel at a time: disruption events or node details.
+  const [panel, setPanel] = useState<{ kind: 'events' | 'info'; node: PathEntry } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -51,7 +55,8 @@ function App() {
 
   // Stable callbacks, so re-rendering App (e.g. opening the events panel) doesn't refetch the graph.
   const drillInto = useCallback((entry: PathEntry) => setPath((p) => [...p, entry]), []);
-  const showEvents = useCallback((entry: PathEntry) => setEventsFor(entry), []);
+  const showEvents = useCallback((node: PathEntry) => setPanel({ kind: 'events', node }), []);
+  const showInfo = useCallback((node: PathEntry) => setPanel({ kind: 'info', node }), []);
 
   const selectVertical = (id: string) => {
     const v = verticals.find((x) => x.id === id);
@@ -98,6 +103,11 @@ function App() {
           </div>
         </div>
 
+        <label className="control-group history-toggle" title="Also show relationships that have ended, greyed out">
+          <input type="checkbox" checked={showHistory} onChange={(e) => setShowHistory(e.target.checked)} />
+          Show history
+        </label>
+
         <div
           className="control-group segmented"
           role="group"
@@ -134,6 +144,7 @@ function App() {
               focus={focus}
               mode={mode}
               context={contextFor(path)}
+              history={showHistory}
               showCustomers={showCustomers}
               onShowCustomersChange={setShowCustomers}
             />
@@ -144,13 +155,16 @@ function App() {
             focus={focus}
             mode={mode}
             context={contextFor(path)}
+            history={showHistory}
             onSelect={drillInto}
             onShowEvents={showEvents}
+            onShowInfo={showInfo}
           />
         )}
       </main>
 
-      {eventsFor && <EventsPanel node={eventsFor} onClose={() => setEventsFor(null)} />}
+      {panel?.kind === 'events' && <EventsPanel node={panel.node} onClose={() => setPanel(null)} />}
+      {panel?.kind === 'info' && <InfoPanel node={panel.node} mode={mode} onClose={() => setPanel(null)} />}
     </div>
   );
 }

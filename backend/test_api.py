@@ -10,13 +10,15 @@ from unittest.mock import AsyncMock, patch
 
 from fastapi.testclient import TestClient
 
+import info_view
 import map_view
 from main import app
 from db.neo4j_client import neo4j_client
 from scripts.seed import get_driver, seed, seed_counts
 
 SUPPLY_TYPES = ["COMPONENT_OF", "MAKES", "SUPPLIES", "INPUT_TO", "PRODUCES", "SOURCE_OF"]
-SEED_TOTALS = (262, 675)  # run1 + run2 seed nodes / relationships
+SEED_TOTALS = (374, 979)  # runs 1-3 (`make seed`): seed nodes / relationships
+RUN12_TOTALS = (262, 675)
 RUN1_TOTALS = (144, 408)
 
 
@@ -42,14 +44,16 @@ class GeneralModeAllowlistTest(unittest.TestCase):
     def test_extra_fields_from_query_are_dropped(self):
         leaky_focus = {"id": "nvidia", "label": "Company", "name": "Nvidia", "category": "Chip designer",
                        "event_count": 1}
-        leaky_roles = [{"role": "HBM", "supplier_count": 3, "confidences": ["low", "high"],
+        leaky_roles = [{"role": "HBM", "supplier_count": 3, "planned_count": 1, "historical_count": 0,
+                        "confidences": ["low", "high"],
                         "name": "SK hynix", "id": "sk_hynix", "source_url": "https://example.com"}]
         with patch.object(neo4j_client, "get_focus", AsyncMock(return_value=leaky_focus)), \
              patch.object(neo4j_client, "get_upstream_general", AsyncMock(return_value=leaky_roles)):
             body = TestClient(app).get("/node/nvidia/upstream?mode=general").json()
 
         self.assertEqual(body["focus"], {"label": "Company", "category": "Chip designer"})
-        self.assertEqual(body["upstream"], [{"role": "HBM", "supplier_count": 3, "confidences": ["high", "low"]}])
+        self.assertEqual(body["upstream"], [{"role": "HBM", "supplier_count": 3, "planned_count": 1,
+                                             "historical_count": 0, "confidences": ["high", "low"]}])
 
 
 class GeneralMapAllowlistTest(unittest.TestCase):
@@ -88,7 +92,7 @@ class GraphTest(unittest.TestCase):
             raise unittest.SkipTest(f"Neo4j not reachable ({type(e).__name__}) — start it and run `make seed`")
         if counts != SEED_TOTALS:
             cls.driver.close()
-            raise unittest.SkipTest(f"seed not fully loaded ({counts}) — run `make seed-reset`")
+            raise unittest.SkipTest(f"seed not fully loaded ({counts}) — run `make seed`")
         with cls.driver.session() as s:
             # Everything that identifies a company or a place: names of companies/sites/lanes and all ids.
             cls.identity_names = s.run(
@@ -135,19 +139,24 @@ class GraphTest(unittest.TestCase):
         self.assertIn("tsmc", ids)
         self.assertIn("arm", self.upstream_ids("nvidia"))
 
+    # 003 test 10 (upstream and info; the map is covered by test_general_map_hides_identity...).
+    # Names and ids come from the database, so they cover every run's nodes.csv.
     def test_general_mode_contains_no_company_names_ids_or_urls(self):
         for node_id in self.seed_node_ids:
-            for params in ({"mode": "general"}, {"mode": "general", "context": "ct_ai_gpu"}):
-                body = self.upstream(node_id, **params)
+            bodies = [self.upstream(node_id, mode="general", **params)
+                      for params in ({}, {"context": "ct_ai_gpu"}, {"include_history": "true"})]
+            bodies.append(self.get(f"/node/{node_id}/info", mode="general"))
+            for body in bodies:
                 self.assertEqual(leaked_terms(body, self.identity_names + self.all_ids), [], node_id)
                 self.assertNotIn("http", json.dumps(body), node_id)
 
     def test_geo_edges_are_not_upstream(self):
         self.assertEqual(self.upstream("country_US")["upstream"], [])
 
-    def test_datacenter_vertical_has_exactly_the_11_chip_types(self):
+    # 003 test 1 (BMC is the 12th)
+    def test_datacenter_vertical_has_exactly_the_12_chip_types(self):
         upstream = self.upstream("vertical_datacenter_ai")["upstream"]
-        self.assertEqual(len(upstream), 11)
+        self.assertEqual(len(upstream), 12)
         self.assertTrue(all(up["label"] == "ChipType" for up in upstream))
 
     def test_every_returned_node_is_one_hop_away(self):
@@ -254,20 +263,170 @@ class GraphTest(unittest.TestCase):
                 for coord in coordinates(body):
                     self.assertIn(coord, centroids | self.chokepoint_coords, node_id)
 
+    def test_every_country_has_a_centroid(self):
+        with self.driver.session() as s:
+            codes = set(s.run("MATCH (x:Site) RETURN collect(DISTINCT x.country) AS v").single()["v"])
+            codes |= {c.replace("country_", "") for c in
+                      s.run("MATCH (c:Country) RETURN collect(c.id) AS v").single()["v"]}
+        self.assertEqual(sorted(codes - set(map_view.COUNTRY_CENTROIDS)), [])
+
     def test_map_rejects_other_focus_types(self):
         self.assertEqual(self.client.get("/node/country_US/map").status_code, 400)
         self.assertEqual(self.client.get("/node/vertical_datacenter_ai/map").status_code, 400)
 
     # 8 (and task 001's "loading twice changes nothing")
+    # 002 test 8, 003 loader test (and task 001's "loading twice changes nothing").
+    # Always ends with a full rebuild, so the other tests see the complete seed.
     def test_seed_loader_reset_and_reload(self):
-        self.assertEqual(seed(self.driver), SEED_TOTALS)
-        self.assertEqual(seed(self.driver), SEED_TOTALS)
         try:
-            self.assertEqual(seed(self.driver, runs=[], reset=["run2"]), RUN1_TOTALS)
+            # Runs 1 + 2 only, as in task 002.
+            self.assertEqual(seed(self.driver, runs=["run1", "run2"], rebuild=True), RUN12_TOTALS)
+            self.assertEqual(seed(self.driver, runs=["run1", "run2"]), RUN12_TOTALS)
+            self.assertEqual(seed(self.driver, reset=["run2"]), RUN1_TOTALS)
             with self.driver.session() as s:
                 self.assertEqual(s.run("MATCH (c:Company {id: 'tsmc'}) RETURN c.name AS n").single()["n"], "TSMC")
+
+            # All runs, then take run 3 back out.
+            self.assertEqual(seed(self.driver, rebuild=True), SEED_TOTALS)
+            self.assertEqual(seed(self.driver, reset=["run3"]), RUN12_TOTALS)
+            with self.driver.session() as s:
+                edge = s.run("MATCH (:Company {id: 'advantest'})-[r:SUPPLIES]->(:Company {id: 'nvidia'}) "
+                             "RETURN r.seed_run AS run, r.seed_runs AS runs").single()
+            # Run 3 updated this run-1 edge; resetting run 3 keeps the edge and its creator. Values run 3
+            # wrote (confidence) stay until the next rebuild — documented loader behaviour.
+            self.assertEqual(edge["run"], "run1-datacenter-gpu")
+            self.assertEqual(edge["runs"], ["run1-datacenter-gpu"])
         finally:
-            self.assertEqual(seed(self.driver, runs=["run2"]), SEED_TOTALS)
+            self.assertEqual(seed(self.driver, rebuild=True), SEED_TOTALS)
+
+
+    # --- Run 3: status, parallel edges, info (task 003) ---
+
+    def edges_by_node(self, node_id, **params):
+        return {up["id"]: up["edges"] for up in self.upstream(node_id, **params)["upstream"]}
+
+    # 2
+    def test_planned_and_historical_suppliers(self):
+        huawei = self.edges_by_node("huawei", context="ct_ai_gpu")
+        self.assertIn("smic", huawei)
+        self.assertEqual([e["status"] for e in huawei["cxmt"]], ["planned"])
+        self.assertNotIn("tsmc", huawei)
+        self.assertNotIn("samsung_memory", huawei)
+
+        with_history = self.edges_by_node("huawei", context="ct_ai_gpu", include_history="true")
+        for old in ("tsmc", "samsung_memory"):
+            self.assertEqual({e["status"] for e in with_history[old]}, {"historical"})
+
+    # 3
+    def test_nvidia_gpu_suppliers_after_run3(self):
+        ids = self.upstream_ids("nvidia", context="ct_ai_gpu")
+        self.assertTrue({"kyec", "samsung_foundry"} <= ids)
+        self.assertFalse({"arm", "lumentum", "coherent"} & ids)
+
+    # 4
+    def test_microsoft_asic_suppliers(self):
+        microsoft = self.edges_by_node("microsoft", context="ct_ai_asic")
+        self.assertIn("planned", {e["status"] for e in microsoft["intel"]})
+        self.assertIn("wiwynn", microsoft)
+        self.assertNotIn("arm", microsoft)
+
+    # 5
+    def test_parallel_edges_stay_on_one_node(self):
+        upstream = self.upstream("ct_ai_gpu")["upstream"]
+        ids = [up["id"] for up in upstream]
+        self.assertEqual(ids.count("nvidia"), 1)
+        nvidia = next(up for up in upstream if up["id"] == "nvidia")
+        self.assertEqual([e["type"] for e in nvidia["edges"]], ["MAKES", "MAKES"])
+        self.assertTrue({"amd", "cerebras", "huawei", "cambricon"} <= set(ids))
+
+    # 6
+    def test_datacenter_operators_sorted_by_capex(self):
+        operators = self.get("/node/vertical_datacenter_ai/info")["operators"]
+        self.assertEqual(len(operators), 9)
+        self.assertEqual(operators[0]["id"], "amazon")
+        google = next(o for o in operators if o["id"] == "google")
+        self.assertEqual(google["capex_usd_bn"], "195-205")
+        # Operators without a capex figure go last.
+        seen_blank = False
+        for o in operators:
+            seen_blank = seen_blank or o["capex_usd_bn"] is None
+            self.assertTrue(o["capex_usd_bn"] is None or not seen_blank, o["id"])
+
+    # 7
+    def test_nvidia_investments(self):
+        out = {i["id"] for i in self.get("/node/nvidia/info")["investments_out"]}
+        self.assertTrue({"intel", "synopsys", "lumentum", "coherent"} <= out)
+
+    # 8
+    def test_oracle_map_has_stargate(self):
+        body = self.map("oracle")
+        self.assertIn("site_dc_stargate_abilene", {s["id"] for s in body["sites"]})
+        self.assertIn("lane_foxconn_gdl_stargate", {lane["id"] for lane in body["lanes"]})
+
+    # 9
+    def test_nvidia_map_has_kyec_test_lane(self):
+        self.assertIn("lane_ap6_kyec", self.lane_ids("nvidia", context="ct_ai_gpu"))
+
+    # 11
+    def test_retracted_edges_are_never_returned(self):
+        # No retracted edges exist in the seed yet, so add two temporary ones (not seed data, own marker):
+        # an extra edge between an existing supplier pair, and the only edge of a new supplier pair.
+        marker = "test-retracted"
+        with self.driver.session() as s:
+            s.run("MATCH (a:Company {id: 'tsmc'}), (b:Company {id: 'nvidia'}) "
+                  "CREATE (a)-[:SUPPLIES {item: 'retracted test edge', status: 'retracted', confidence: 'high', "
+                  "source_url: 'https://example.com', test_marker: $m}]->(b)", m=marker)
+            s.run("MATCH (a:Company {id: 'arm'}), (b:Company {id: 'asml'}) "
+                  "CREATE (a)-[:SUPPLIES {item: 'retracted test edge', status: 'retracted', confidence: 'high', "
+                  "source_url: 'https://example.com', test_marker: $m}]->(b)", m=marker)
+        try:
+            for history in ("false", "true"):
+                for node_id in ("nvidia", "asml"):
+                    body = self.upstream(node_id, include_history=history)
+                    statuses = {e["status"] for up in body["upstream"] for e in up["edges"]}
+                    self.assertNotIn("retracted", statuses, node_id)
+                    self.assertNotIn("arm", {up["id"] for up in body["upstream"]} if node_id == "asml" else set())
+                companies = {c["id"] for c in self.map("asml", include_history=history)["companies"]}
+                self.assertNotIn("arm", companies)
+        finally:
+            with self.driver.session() as s:
+                s.run("MATCH ()-[r {test_marker: $m}]->() DELETE r", m=marker)
+        self.assertEqual(seed_counts(self.driver), SEED_TOTALS)
+
+    def test_planned_sites_are_flagged(self):
+        sites = {s["id"]: s for s in self.map("kyec")["sites"]}
+        self.assertTrue(sites["site_kyec_singapore"]["planned"])
+        self.assertFalse(sites["site_kyec_miaoli"]["planned"] if "site_kyec_miaoli" in sites else False)
+
+    def test_general_upstream_reports_planned_separately(self):
+        roles = {r["role"]: r for r in self.upstream("tsmc", mode="general")["upstream"]}
+        packaging = roles["Advanced packaging equipment"]
+        self.assertEqual(packaging["supplier_count"], 0)
+        self.assertEqual(packaging["planned_count"], 15)
+
+
+class GeneralInfoAllowlistTest(unittest.TestCase):
+    def test_general_info_keeps_only_category_country_and_counts(self):
+        specific = {
+            "id": "nvidia", "label": "Company", "name": "Nvidia", "category": "Chip designer", "country": "US",
+            "ticker": "NVDA", "description": "Makes Blackwell GPUs", "site_count": 0,
+            "events": [{"id": "ev_x", "name": "HBM shortage", "source_url": "https://example.com/ev"}],
+            "capex": [],
+            "investments_out": [{"id": "intel", "name": "Intel", "item": "equity", "amount_usd_bn": "5",
+                                 "source_url": "https://example.com/inv"}],
+            "investments_in": [],
+        }
+        general = info_view.to_general(specific)
+        self.assertEqual(leaked_terms(general, ["nvidia", "NVDA", "Intel", "Blackwell", "ev_x", "HBM shortage"]), [])
+        self.assertNotIn("http", json.dumps(general))
+        self.assertEqual(general["investments_out_count"], 1)
+        self.assertEqual(general["event_count"], 1)
+
+    def test_capex_sort_key(self):
+        self.assertEqual(info_view.capex_sort_key("~220"), (0, -220.0))
+        self.assertEqual(info_view.capex_sort_key("net ≤70 (gross up to ~95)"), (0, -70.0))
+        self.assertEqual(info_view.capex_sort_key("195-205"), (0, -195.0))
+        self.assertEqual(info_view.capex_sort_key(None), (1, 0.0))
 
 
 if __name__ == "__main__":

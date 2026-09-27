@@ -11,10 +11,14 @@ from collections import defaultdict
 # When a company qualifies for several roles, the strongest one wins (and colours its sites).
 ROLE_PRIORITY = ["focus", "supplier", "material producer", "customer"]
 
-# Approximate country centroids for General mode (lat, lon). Covers every Country node in runs 1-2.
+# Approximate country centroids for General mode (lat, lon). Must cover every Country node and every
+# site's country; a test checks this, so a new run with a new country fails loudly instead of crashing.
 COUNTRY_CENTROIDS = {
     "AT": ("Austria", 47.6, 14.1),
     "BE": ("Belgium", 50.6, 4.7),
+    "CA": ("Canada", 56.1, -106.3),
+    "CD": ("DR Congo", -2.9, 23.6),
+    "CH": ("Switzerland", 46.8, 8.2),
     "CN": ("China", 35.0, 103.0),
     "DE": ("Germany", 51.2, 10.4),
     "DZ": ("Algeria", 28.0, 2.6),
@@ -22,6 +26,7 @@ COUNTRY_CENTROIDS = {
     "GB": ("United Kingdom", 54.0, -2.5),
     "IE": ("Ireland", 53.2, -8.0),
     "IN": ("India", 22.0, 79.0),
+    "IT": ("Italy", 42.8, 12.6),
     "JP": ("Japan", 36.2, 138.3),
     "KR": ("South Korea", 36.4, 127.9),
     "MX": ("Mexico", 23.6, -102.5),
@@ -30,7 +35,9 @@ COUNTRY_CENTROIDS = {
     "NO": ("Norway", 61.0, 9.0),
     "QA": ("Qatar", 25.3, 51.2),
     "RU": ("Russia", 61.5, 96.0),
+    "RW": ("Rwanda", -1.9, 29.9),
     "SG": ("Singapore", 1.35, 103.82),
+    "TH": ("Thailand", 15.1, 101.0),
     "TW": ("Taiwan", 23.7, 121.0),
     "UA": ("Ukraine", 49.0, 31.4),
     "US": ("United States", 39.8, -98.6),
@@ -49,6 +56,11 @@ def company_set(focus, candidates):
     return companies
 
 
+def is_planned_site(status):
+    """Sites have no edge status yet; a site still being planned or built is treated as planned."""
+    return (status or "").lower().startswith(("planned", "under construction"))
+
+
 def _best_role(roles):
     return min(roles, key=ROLE_PRIORITY.index) if roles else "lane endpoint"
 
@@ -64,6 +76,7 @@ def build_specific(focus, companies, site_rows, lane_rows):
             **s,
             "operators": row["operators"],
             "role": _best_role([companies[o]["role"] for o in operator_ids if o in companies]),
+            "planned": is_planned_site(s.get("status")),
             "events": row["events"],
         })
 

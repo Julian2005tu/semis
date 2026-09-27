@@ -24,7 +24,10 @@ function unmappedReason(c: MapCompany) {
 function SiteDetails({ site }: { site: MapSite }) {
   return (
     <>
-      <h3>{site.name}</h3>
+      <h3>
+        {site.name}
+        {site.planned && <span className="status-badge planned">planned</span>}
+      </h3>
       <Row label="Operator" value={site.operators.map((o) => o.name).join(' / ') || null} />
       <Row label="Role on map" value={site.role} />
       <Row label="Type" value={site.site_type} />
