@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import GraphView from './GraphView';
 import EventsPanel from './EventsPanel';
 import { fetchVerticals } from './api';
@@ -13,6 +13,10 @@ export interface PathEntry {
 
 const DEFAULT_VERTICAL = 'vertical_datacenter_ai';
 
+// The map libraries are large (~1 MB); load them only when Map is first opened.
+const MapView = lazy(() => import('./MapView'));
+const MAP_LABELS = ['Company', 'ChipType'];
+
 // The most recent ChipType in the path is the context for everything below it, so e.g.
 // Datacenter > AI GPU > Nvidia only shows Nvidia's GPU inputs. Deriving it from the path means
 // jumping back via the breadcrumb restores that level's context automatically.
@@ -24,6 +28,8 @@ function App() {
   const [verticals, setVerticals] = useState<Vertical[]>([]);
   const [path, setPath] = useState<PathEntry[]>([]);
   const [mode, setMode] = useState<Mode>('specific');
+  const [view, setView] = useState<'graph' | 'map'>('graph');
+  const [showCustomers, setShowCustomers] = useState(false);
   const [eventsFor, setEventsFor] = useState<PathEntry | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -38,6 +44,10 @@ function App() {
   }, []);
 
   const focus = path[path.length - 1];
+  // `view` remembers the user's choice; on a level without a map (e.g. an end market) we just show the
+  // graph, and going back to a company shows the map again.
+  const mapAvailable = !!focus && MAP_LABELS.includes(focus.label);
+  const showMap = view === 'map' && mapAvailable;
 
   // Stable callbacks, so re-rendering App (e.g. opening the events panel) doesn't refetch the graph.
   const drillInto = useCallback((entry: PathEntry) => setPath((p) => [...p, entry]), []);
@@ -87,6 +97,18 @@ function App() {
             <span className={`toggle-label ${mode === 'general' ? 'active' : ''}`}>General</span>
           </div>
         </div>
+
+        <div
+          className="control-group segmented"
+          role="group"
+          aria-label="Graph or map view"
+          title={mapAvailable ? undefined : 'Map is available when the focus is a company or chip type'}
+        >
+          <button className={!showMap ? 'active' : ''} onClick={() => setView('graph')}>Graph</button>
+          <button className={showMap ? 'active' : ''} onClick={() => setView('map')} disabled={!mapAvailable}>
+            Map
+          </button>
+        </div>
       </div>
 
       <nav className="breadcrumbs" aria-label="Drill-down path">
@@ -106,7 +128,18 @@ function App() {
 
       <main className="main-content">
         {error && <div className="error">{error}</div>}
-        {focus && (
+        {focus && showMap && (
+          <Suspense fallback={<div className="graph-frame graph-message">Loading map…</div>}>
+            <MapView
+              focus={focus}
+              mode={mode}
+              context={contextFor(path)}
+              showCustomers={showCustomers}
+              onShowCustomersChange={setShowCustomers}
+            />
+          </Suspense>
+        )}
+        {focus && !showMap && (
           <GraphView
             focus={focus}
             mode={mode}

@@ -11,7 +11,7 @@ import SupplyNode from './SupplyNode';
 import type { SupplyNodeData } from './SupplyNode';
 
 const nodeWidth = 220;
-const nodeHeight = 56;
+const nodeHeight = 66; // room for the "N sites" chip
 const nodeTypes = { supply: SupplyNode };
 
 // Edge styling by confidence: high solid, medium lighter, low dashed.
@@ -111,6 +111,7 @@ export default function GraphView({
                 subtitle: up.category,
                 edges: up.edges,
                 eventCount: up.event_count,
+                siteCount: up.site_count,
                 onClick: () => onSelect(entry),
                 onShowEvents: () => onShowEvents(entry),
               },

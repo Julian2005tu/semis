@@ -520,11 +520,13 @@ input:checked + .slider:before {
   cursor: pointer;
 }
 
+/* Opens to the right, over the edges: below the node it would cover the next node in the column
+   and swallow its click. */
 .supply-tooltip {
   display: none;
   position: absolute;
-  top: calc(100% - 2px);
-  left: 0;
+  top: 0;
+  left: calc(100% - 2px);
   width: 260px;
   max-height: 260px;
   overflow-y: auto;
@@ -562,6 +564,224 @@ input:checked + .slider:before {
 .conf-high { color: #16a34a; }
 .conf-medium { color: #d97706; }
 .conf-low { color: #dc2626; }
+
+.site-chip {
+  display: inline-block;
+  margin-top: 3px;
+  padding: 0 6px;
+  border-radius: 8px;
+  background: rgba(56, 189, 248, 0.15);
+  color: #7dd3fc;
+  font-size: 10px;
+  line-height: 16px;
+}
+
+/* Graph / Map segmented toggle */
+.segmented {
+  gap: 0;
+}
+
+.segmented button {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.segmented button:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.segmented button:last-child {
+  border-radius: 0 8px 8px 0;
+  border-left: none;
+}
+
+.segmented button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+  font-weight: 600;
+}
+
+.segmented button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Map mode */
+.map-frame .maplibregl-ctrl-attrib {
+  font-size: 11px;
+}
+
+.map-message {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.map-toolbar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.map-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-h);
+  cursor: pointer;
+}
+
+.map-panel {
+  position: absolute;
+  top: 52px;
+  right: 10px;
+  bottom: 40px;
+  width: min(300px, 45%);
+  overflow-y: auto;
+  z-index: 5;
+  padding: 12px 14px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  text-align: left;
+  font-size: 13px;
+  color: var(--text-h);
+}
+
+.map-panel h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.map-panel a {
+  color: var(--accent);
+}
+
+.panel-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 8px;
+  padding: 3px 0;
+}
+
+.panel-label {
+  color: var(--text);
+  font-size: 12px;
+}
+
+.panel-events,
+.panel-route {
+  margin: 8px 0;
+}
+
+.panel-route ol {
+  margin: 4px 0;
+  padding-left: 20px;
+}
+
+.panel-event {
+  margin-top: 4px;
+}
+
+.panel-back {
+  margin-bottom: 8px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+}
+
+.muted {
+  color: var(--text);
+}
+
+.affected-text {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.unmapped {
+  margin: 4px 0;
+  padding-left: 18px;
+}
+
+.map-legend {
+  top: auto;
+  bottom: 10px;
+  max-width: 330px;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.map-legend .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.map-legend .bar {
+  width: 18px;
+  height: 3px;
+}
+
+.map-legend .bar.dashed {
+  background: repeating-linear-gradient(90deg, #94a3b8 0 4px, transparent 4px 7px);
+}
+
+.chokepoint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f59e0b;
+  border: 2px solid #0f172a;
+  color: #0f172a;
+  font-size: 11px;
+  font-weight: 800;
+  font-style: normal;
+  cursor: default;
+}
+
+.chokepoint.affected {
+  background: #dc2626;
+  color: white;
+  animation: pulse 1.6s ease-out infinite;
+}
+
+.chokepoint.mini {
+  width: 12px;
+  height: 12px;
+  border-width: 1px;
+  font-size: 8px;
+  animation: none;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgba(220, 38, 38, 0);
+  }
+}
 
 /* Events side panel */
 .events-panel {

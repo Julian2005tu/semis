@@ -14,23 +14,24 @@ NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "password")
 # goes in as parameters.
 #
 # Shared by both upstream queries:
-#   - only supply-flow edges; context edges (HEADQUARTERED_IN, LOCATED_IN, SUBSIDIARY_OF, AFFECTS)
-#     never show up as upstream
+#   - only supply-flow edges; context edges (HEADQUARTERED_IN, LOCATED_IN, SUBSIDIARY_OF, AFFECTS,
+#     SITE_OF, FROM_SITE, TO_SITE, VIA) never show up as upstream. FAB_OF is legacy since run 2:
+#     sites live on the map, not in the drill-down.
 #   - $ctx (a ChipType id or null) keeps only edges meant for that chip type, so Arm doesn't appear
 #     as a GPU supplier of Nvidia
 
 UPSTREAM_SPECIFIC_QUERY = """
 MATCH (focus {id: $id})<-[r]-(up)
-WHERE type(r) IN ['COMPONENT_OF','MAKES','SUPPLIES','FAB_OF','INPUT_TO','PRODUCES','SOURCE_OF']
+WHERE type(r) IN ['COMPONENT_OF','MAKES','SUPPLIES','INPUT_TO','PRODUCES','SOURCE_OF']
   AND ($ctx IS NULL OR r.for_chiptypes IS NULL OR $ctx IN split(r.for_chiptypes, ';'))
 WITH up, collect({
     type: type(r), item: r.item, item_category: r.item_category,
     share_estimate: r.share_estimate, confidence: r.confidence, source_url: r.source_url
 }) AS edges
-OPTIONAL MATCH (ev:DisruptionEvent)-[:AFFECTS]->(up)
-WHERE ev.status IN ['ongoing', 'upcoming']
-RETURN up.id AS id, labels(up)[0] AS label, up.name AS name, up.category AS category,
-       edges, count(DISTINCT ev) AS event_count
+RETURN up.id AS id, labels(up)[0] AS label, up.name AS name, up.category AS category, edges,
+       COUNT { MATCH (ev:DisruptionEvent)-[:AFFECTS]->(up) WHERE ev.status IN ['ongoing', 'upcoming'] }
+           AS event_count,
+       COUNT { MATCH (:Site)-[:SITE_OF]->(up) } AS site_count
 ORDER BY name
 """
 
@@ -38,7 +39,7 @@ ORDER BY name
 # falling back to the upstream node's own category. Only role labels and counts leave the database.
 UPSTREAM_GENERAL_QUERY = """
 MATCH (focus {id: $id})<-[r]-(up)
-WHERE type(r) IN ['COMPONENT_OF','MAKES','SUPPLIES','FAB_OF','INPUT_TO','PRODUCES','SOURCE_OF']
+WHERE type(r) IN ['COMPONENT_OF','MAKES','SUPPLIES','INPUT_TO','PRODUCES','SOURCE_OF']
   AND ($ctx IS NULL OR r.for_chiptypes IS NULL OR $ctx IN split(r.for_chiptypes, ';'))
 WITH coalesce(r.item_category, up.category, labels(up)[0]) AS role, up, r
 RETURN role, count(DISTINCT up) AS supplier_count, collect(DISTINCT r.confidence) AS confidences
@@ -59,6 +60,75 @@ WHERE ev.status IN ['ongoing', 'upcoming']
 RETURN ev.id AS id, ev.name AS name, ev.date AS date, ev.status AS status,
        ev.severity AS severity, ev.description AS description, ev.source_url AS source_url
 ORDER BY ev.date
+"""
+
+# --- Map mode ---------------------------------------------------------------------------------------
+# The map shows a set of companies S (see map_view.py for how roles combine), their sites, and the
+# lanes that connect them. Each query below fetches one piece; map_view.py assembles the response.
+
+# Companies feeding the focus company directly (same edge types and context filter as the drill-down).
+MAP_SUPPLIERS_QUERY = """
+MATCH (:Company {id: $id})<-[r]-(c:Company)
+WHERE type(r) IN ['COMPONENT_OF','MAKES','SUPPLIES','INPUT_TO','PRODUCES','SOURCE_OF']
+  AND ($ctx IS NULL OR r.for_chiptypes IS NULL OR $ctx IN split(r.for_chiptypes, ';'))
+RETURN DISTINCT c.id AS id, c.name AS name, c.category AS category
+"""
+
+# Miners/refiners of raw materials that feed the focus company (e.g. Sibelco → quartz → Shin-Etsu).
+MAP_MATERIAL_PRODUCERS_QUERY = """
+MATCH (:Company {id: $id})<-[r:INPUT_TO]-(:RawMaterial)<-[:PRODUCES]-(c:Company)
+WHERE $ctx IS NULL OR r.for_chiptypes IS NULL OR $ctx IN split(r.for_chiptypes, ';')
+RETURN DISTINCT c.id AS id, c.name AS name, c.category AS category
+"""
+
+# Companies the focus company supplies (only fetched when include_customers is on).
+MAP_CUSTOMERS_QUERY = """
+MATCH (:Company {id: $id})-[r:SUPPLIES]->(c:Company)
+WHERE $ctx IS NULL OR r.for_chiptypes IS NULL OR $ctx IN split(r.for_chiptypes, ';')
+RETURN DISTINCT c.id AS id, c.name AS name, c.category AS category
+"""
+
+MAP_CHIP_MAKERS_QUERY = """
+MATCH (:ChipType {id: $id})<-[:MAKES]-(c:Company)
+RETURN DISTINCT c.id AS id, c.name AS name, c.category AS category
+"""
+
+# A lane's commercial chain is [from_company, *via_companies, to_company]; it is shown when at least two
+# chain positions are companies in S. Counting positions (not distinct companies) keeps intra-company
+# lanes such as TSMC fab → TSMC packaging. Lanes tagged for other chip types are dropped, like edges.
+MAP_LANES_QUERY = """
+MATCH (l:Lane)
+WHERE $ctx IS NULL OR l.for_chiptypes IS NULL OR $ctx IN split(l.for_chiptypes, ';')
+WITH l, [l.from_company] + coalesce(split(l.via_companies, ';'), []) + [l.to_company] AS chain
+WHERE size([c IN chain WHERE c IN $company_ids]) >= 2
+MATCH (l)-[:FROM_SITE]->(fs:Site), (l)-[:TO_SITE]->(ts:Site)
+RETURN l {.id, .item, .item_category, .mode, .mode_basis, .typical_transit, .distance_km, .geometry,
+          .confidence, .source_url} AS lane,
+       chain, fs.id AS from_site, ts.id AS to_site,
+       COLLECT { MATCH (c:Company) WHERE c.id IN chain RETURN {id: c.id, name: c.name} } AS chain_companies,
+       COLLECT {
+           MATCH (l)-[v:VIA]->(h:Hub)
+           WITH v, h ORDER BY v.seq
+           RETURN {id: h.id, name: h.name, code: h.code, hub_type: h.hub_type, kind: v.kind,
+                   leg_mode: v.leg_mode, lat: h.lat, lon: h.lon,
+                   affected: EXISTS { MATCH (ev:DisruptionEvent)-[:AFFECTS]->(h)
+                                      WHERE ev.status IN ['ongoing', 'upcoming'] }}
+       } AS stops
+ORDER BY l.id
+"""
+
+# Sites operated by a company in S, plus the lane endpoints we must always draw.
+MAP_SITES_QUERY = """
+MATCH (s:Site)
+WHERE s.id IN $site_ids OR EXISTS { MATCH (s)-[:SITE_OF]->(c:Company) WHERE c.id IN $company_ids }
+RETURN s {.id, .name, .site_type, .status, .products, .city, .country, .lat, .lon, .geo_precision,
+          .confidence, .source_url} AS site,
+       COLLECT { MATCH (s)-[:SITE_OF]->(c:Company) RETURN {id: c.id, name: c.name} } AS operators,
+       COLLECT {
+           MATCH (ev:DisruptionEvent)-[:AFFECTS]->(s) WHERE ev.status IN ['ongoing', 'upcoming']
+           RETURN ev {.id, .name, .date, .status, .severity, .description, .source_url}
+       } AS events
+ORDER BY s.name
 """
 
 VERTICALS_QUERY = """
@@ -104,6 +174,22 @@ class Neo4jClient:
 
     async def get_verticals(self):
         return await self._run(VERTICALS_QUERY)
+
+    async def get_map_companies(self, node_id: str, label: str, ctx, include_customers: bool):
+        """Candidate companies per role; map_view.company_set() merges them into set S."""
+        if label == "ChipType":
+            return {"supplier": await self._run(MAP_CHIP_MAKERS_QUERY, id=node_id)}
+        return {
+            "supplier": await self._run(MAP_SUPPLIERS_QUERY, id=node_id, ctx=ctx),
+            "material producer": await self._run(MAP_MATERIAL_PRODUCERS_QUERY, id=node_id, ctx=ctx),
+            "customer": await self._run(MAP_CUSTOMERS_QUERY, id=node_id, ctx=ctx) if include_customers else [],
+        }
+
+    async def get_map_lanes(self, company_ids, ctx):
+        return await self._run(MAP_LANES_QUERY, company_ids=company_ids, ctx=ctx)
+
+    async def get_map_sites(self, company_ids, site_ids):
+        return await self._run(MAP_SITES_QUERY, company_ids=company_ids, site_ids=site_ids)
 
 
 neo4j_client = Neo4jClient(NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD)

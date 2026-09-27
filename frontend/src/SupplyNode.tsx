@@ -9,6 +9,7 @@ export type SupplyNodeData = {
   isFocus?: boolean;
   edges?: SupplyEdge[]; // specific mode only: every edge from this node into the focus
   eventCount?: number;
+  siteCount?: number; // specific mode only: production sites shown in Map mode
   delay?: number; // staggers the entry animation
   onClick?: () => void; // absent in general mode: roles aren't nodes you can drill into
   onShowEvents?: () => void;
@@ -18,7 +19,7 @@ export type SupplyNodeData = {
 const stop = (e: MouseEvent) => e.stopPropagation();
 
 export default function SupplyNode({ data }: NodeProps<Node<SupplyNodeData>>) {
-  const { title, subtitle, isFocus, edges, eventCount, delay = 0, onClick, onShowEvents } = data;
+  const { title, subtitle, isFocus, edges, eventCount, siteCount, delay = 0, onClick, onShowEvents } = data;
 
   return (
     <div
@@ -29,6 +30,7 @@ export default function SupplyNode({ data }: NodeProps<Node<SupplyNodeData>>) {
       <Handle type="target" position={Position.Left} className="hidden-handle" />
       <div className="supply-node-title">{title}</div>
       {subtitle && <div className="supply-node-subtitle">{subtitle}</div>}
+      {!!siteCount && <span className="site-chip">{siteCount} site{siteCount === 1 ? '' : 's'}</span>}
       <Handle type="source" position={Position.Right} className="hidden-handle" />
 
       {!!eventCount && onShowEvents && (

@@ -30,10 +30,12 @@ disruption somewhere upstream is likely to hit a product downstream, including s
 - [x] Load `data/seed/run1`
 - [x] Generic one-hop upstream endpoint with `context` filter and server-enforced General mode
 - [x] Left-to-right drill-down UI with breadcrumb, confidence styling, source tooltips, event badges
+- [x] Map mode (task 002): production sites, shipment lanes, hubs and chokepoints on a world map
 
 ### Phase 2 — Data coverage · *started (run1 done)*
 Each run is a new `data/seed/runN/` folder with its own `seed_run` tag.
 - [x] Run 1: Datacenter/AI vertical, GPU chain deep (Sept 2026)
+- [x] Run 2: production sites and logistics lanes (Sept 2026)
 - [ ] Verify the 56 `low` confidence edges from run 1
 - [ ] Go vertical: deepen HBM (DRAM fab tools, TSV, hybrid bonding) and EUV (Zeiss/Trumpf sub-suppliers, masks, pellicles)
 - [ ] Go horizontal: same depth for server CPU, networking/optics, enterprise SSD

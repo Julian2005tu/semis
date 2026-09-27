@@ -3,6 +3,7 @@ from typing import Optional
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from db.neo4j_client import neo4j_client
+import map_view
 import uvicorn
 from dotenv import load_dotenv
 
@@ -71,6 +72,32 @@ async def get_node_upstream(
             for row in roles
         ],
     }
+
+@app.get("/node/{node_id}/map")
+async def get_node_map(
+    node_id: str,
+    mode: str = Query("specific", pattern="^(specific|general)$"),
+    context: Optional[str] = Query(None, description="ChipType id; same filter as the drill-down"),
+    include_customers: bool = False,
+):
+    """
+    Production sites of the focus (a Company or ChipType) and its current suppliers, plus the shipment
+    lanes between them. General mode aggregates everything to countries (see map_view.to_general).
+    """
+    focus = await neo4j_client.get_focus(node_id)
+    if focus is None:
+        raise HTTPException(status_code=404, detail="Node not found")
+    if focus["label"] not in ("Company", "ChipType"):
+        raise HTTPException(status_code=400, detail="Map mode is available for companies and chip types only")
+
+    candidates = await neo4j_client.get_map_companies(node_id, focus["label"], context, include_customers)
+    companies = map_view.company_set(focus, candidates)
+    lanes = await neo4j_client.get_map_lanes(list(companies), context)
+    endpoint_sites = sorted({row["from_site"] for row in lanes} | {row["to_site"] for row in lanes})
+    sites = await neo4j_client.get_map_sites(list(companies), endpoint_sites)
+
+    specific = map_view.build_specific(focus, companies, sites, lanes)
+    return specific if mode == "specific" else map_view.to_general(specific)
 
 @app.get("/node/{node_id}/events")
 async def get_node_events(node_id: str):
