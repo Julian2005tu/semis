@@ -1,0 +1,268 @@
+from_id,to_id,type,item,item_category,share_estimate,confidence,as_of,source_url,notes,for_chiptypes,props
+foxconn,country_TW,HEADQUARTERED_IN,,,,high,2026-09,,,,
+wistron,country_TW,HEADQUARTERED_IN,,,,high,2026-09,,,,
+qatarenergy,country_QA,HEADQUARTERED_IN,,,,high,2026-09,,,,
+nvidia,foxconn,SUPPLIES,GB200/GB300 GPU and superchip modules for server and rack assembly (incl. Guadalajara),GPU modules for system assembly,,medium,2026-09,https://mexiconewsdaily.com/business/foxconn-nvidia-mexico-superchip-plant/,Downstream (customer) edge: Nvidia consigns chips to ODMs for L6-L11 assembly.,ct_ai_gpu,
+nvidia,wistron,SUPPLIES,GB300 (later Vera Rubin) chips for superchip/baseboard assembly in Fort Worth,GPU modules for system assembly,,high,2026-09,https://blogs.nvidia.com/blog/wistron-manufacturing-texas/,,ct_ai_gpu,
+qatarenergy,rm_helium,PRODUCES,,,,high,2026-09,https://www.fusionww.com/insights/helium-shortage-2026,Helium is a by-product of LNG processing at Ras Laffan.,,
+qatarenergy,air_liquide,SUPPLIES,Qatari helium,Specialty gases (helium),,medium,2026-09,https://www.thelec.net/news/articleView.html?idxno=6422,Air Liquide and Iwatani were described as heavily dependent on Qatari helium.,,
+fab_tsmc_18,tsmc,SITE_OF,operates,,,high,2026-09,https://www.sec.gov/Archives/edgar/data/1046179/000156459022039856/tsm-6k_20221229.htm,,,
+fab_tsmc_20,tsmc,SITE_OF,operates,,,high,2026-09,https://www.trendforce.com/news/2026/02/23/news-tsmc-speeds-up-expansion-in-taiwan-up-to-10-fabs-reportedly-under-construction-or-starting-in-2026/,,,
+fab_tsmc_22,tsmc,SITE_OF,operates,,,high,2026-09,https://www.trendforce.com/news/2026/02/23/news-tsmc-speeds-up-expansion-in-taiwan-up-to-10-fabs-reportedly-under-construction-or-starting-in-2026/,,,
+fab_tsmc_25,tsmc,SITE_OF,operates,,,high,2026-09,https://www.trendforce.com/news/2026/02/23/news-tsmc-speeds-up-expansion-in-taiwan-up-to-10-fabs-reportedly-under-construction-or-starting-in-2026/,,,
+fab_tsmc_21_az,tsmc,SITE_OF,operates,,,high,2026-09,https://tech-insider.org/tsmc-arizona-165-billion-expansion-gigafab-2026/,,,
+site_tsmc_ap5b,tsmc,SITE_OF,operates,,,high,2026-09,https://www.trendforce.com/news/2026/02/23/news-tsmc-speeds-up-expansion-in-taiwan-up-to-10-fabs-reportedly-under-construction-or-starting-in-2026/,,,
+site_tsmc_ap7,tsmc,SITE_OF,operates,,,high,2026-09,https://www.trendforce.com/news/2025/12/04/news-tsmc-speeds-advanced-packaging-ap7-targets-2026-output-arizona-p6-eyed-for-u-s-packaging-hub/,,,
+site_tsmc_ap3_longtan,country_TW,LOCATED_IN,,,,high,2026-09,,,,
+site_tsmc_ap3_longtan,tsmc,SITE_OF,operates,,,high,2026-09,https://www.techtimes.com/articles/323679/20260809/tsmc-revives-longtan-14nm-fabs-cowos-hub-both-sell-out-globally.htm,,,
+site_tsmc_ap6_zhunan,country_TW,LOCATED_IN,,,,high,2026-09,,,,
+site_tsmc_ap6_zhunan,tsmc,SITE_OF,operates,,,medium,2026-09,https://aiinasia.com/greater-china/tsmc-cowos-ai-packaging-capacity-taiwan-supply-chain-2026,,,
+site_tsmc_ap8_tainan,country_TW,LOCATED_IN,,,,high,2026-09,,,,
+site_tsmc_ap8_tainan,tsmc,SITE_OF,operates,,,medium,2026-09,https://aiinasia.com/greater-china/tsmc-cowos-ai-packaging-capacity-taiwan-supply-chain-2026,,,
+fab_skh_m15x,sk_hynix,SITE_OF,operates,,,high,2026-09,https://www.trendforce.com/news/2026/01/13/news-sk-hynix-to-build-cheongju-advanced-packaging-fab-boosting-hbm-output-by-2027/,,,
+site_skh_indiana,sk_hynix,SITE_OF,operates,,,medium,2026-09,https://www.trendforce.com/news/2026/01/13/news-sk-hynix-to-build-cheongju-advanced-packaging-fab-boosting-hbm-output-by-2027/,,,
+site_skh_icheon,country_KR,LOCATED_IN,,,,high,2026-09,,,,
+site_skh_icheon,sk_hynix,SITE_OF,operates,,,medium,2026-09,https://www.trendforce.com/news/2026/01/13/news-sk-hynix-to-build-cheongju-advanced-packaging-fab-boosting-hbm-output-by-2027/,,,
+site_skh_cheongju_pt,country_KR,LOCATED_IN,,,,high,2026-09,,,,
+site_skh_cheongju_pt,sk_hynix,SITE_OF,operates,,,medium,2026-09,https://www.trendforce.com/news/2026/01/13/news-sk-hynix-to-build-cheongju-advanced-packaging-fab-boosting-hbm-output-by-2027/,,,
+fab_samsung_pyeongtaek,samsung_memory,SITE_OF,operates,,,medium,2026-09,https://www.trendforce.com/news/2026/08/20/news-samsung-to-break-ground-on-krw-6t-onyang-hbm-fab-in-sept-p5-eyes-triple-fab-shift-as-expansion-accelerates/,,,
+fab_samsung_pyeongtaek,samsung_foundry,SITE_OF,operates,,,medium,2026-09,https://www.trendforce.com/news/2026/08/20/news-samsung-to-break-ground-on-krw-6t-onyang-hbm-fab-in-sept-p5-eyes-triple-fab-shift-as-expansion-accelerates/,,,
+site_samsung_hwaseong,country_KR,LOCATED_IN,,,,high,2026-09,,,,
+site_samsung_hwaseong,samsung_memory,SITE_OF,operates,,,medium,2026-09,https://www.trendforce.com/news/2026/08/20/news-samsung-to-break-ground-on-krw-6t-onyang-hbm-fab-in-sept-p5-eyes-triple-fab-shift-as-expansion-accelerates/,,,
+site_samsung_hwaseong,samsung_foundry,SITE_OF,operates,,,medium,2026-09,https://www.trendforce.com/news/2026/08/20/news-samsung-to-break-ground-on-krw-6t-onyang-hbm-fab-in-sept-p5-eyes-triple-fab-shift-as-expansion-accelerates/,,,
+site_samsung_onyang,country_KR,LOCATED_IN,,,,high,2026-09,,,,
+site_samsung_onyang,samsung_memory,SITE_OF,operates,,,medium,2026-09,https://www.trendforce.com/news/2026/08/20/news-samsung-to-break-ground-on-krw-6t-onyang-hbm-fab-in-sept-p5-eyes-triple-fab-shift-as-expansion-accelerates/,,,
+site_samsung_cheonan,country_KR,LOCATED_IN,,,,high,2026-09,,,,
+site_samsung_cheonan,samsung_memory,SITE_OF,operates,,,low,2026-09,,,,
+site_micron_taichung,country_TW,LOCATED_IN,,,,high,2026-09,,,,
+site_micron_taichung,micron,SITE_OF,operates,,,low,2026-09,,,,
+site_micron_tongluo,country_TW,LOCATED_IN,,,,high,2026-09,,,,
+site_micron_tongluo,micron,SITE_OF,operates,,,medium,2026-09,https://finance.biggo.com/news/h0Jk9ZwB5edQG9E457Lh,,,
+site_micron_hiroshima,country_JP,LOCATED_IN,,,,high,2026-09,,,,
+site_micron_hiroshima,micron,SITE_OF,operates,,,medium,2026-09,https://www.datacenterdynamics.com/en/news/micron-planning-96bn-hbm-fab-at-hiroshima-site-report/,,,
+site_micron_sanand,country_IN,LOCATED_IN,,,,high,2026-09,,,,
+site_micron_sanand,micron,SITE_OF,operates,,,medium,2026-09,https://finance.biggo.com/news/h0Jk9ZwB5edQG9E457Lh,,,
+site_micron_singapore_hbm,country_SG,LOCATED_IN,,,,high,2026-09,,,,
+site_micron_singapore_hbm,micron,SITE_OF,operates,,,low,2026-09,,,,
+site_kioxia_yokkaichi,country_JP,LOCATED_IN,,,,high,2026-09,,,,
+site_kioxia_yokkaichi,kioxia,SITE_OF,operates,,,low,2026-09,,,,
+site_kioxia_yokkaichi,sandisk,SITE_OF,operates,,,low,2026-09,,,,
+site_kioxia_kitakami,country_JP,LOCATED_IN,,,,high,2026-09,,,,
+site_kioxia_kitakami,kioxia,SITE_OF,operates,,,low,2026-09,,,,
+site_kioxia_kitakami,sandisk,SITE_OF,operates,,,low,2026-09,,,,
+site_amkor_arizona,amkor,SITE_OF,operates,,,medium,2026-09,https://www.trendforce.com/news/2025/12/04/news-tsmc-speeds-advanced-packaging-ap7-targets-2026-output-arizona-p6-eyed-for-u-s-packaging-hub/,,,
+site_amkor_k5,country_KR,LOCATED_IN,,,,high,2026-09,,,,
+site_amkor_k5,amkor,SITE_OF,operates,,,low,2026-09,,,,
+site_ase_kaohsiung,country_TW,LOCATED_IN,,,,high,2026-09,,,,
+site_ase_kaohsiung,ase,SITE_OF,operates,,,low,2026-09,,,,
+site_spil_taichung,country_TW,LOCATED_IN,,,,high,2026-09,,,,
+site_spil_taichung,ase,SITE_OF,operates,,,low,2026-09,,,,
+site_ibiden_gama,country_JP,LOCATED_IN,,,,high,2026-09,,,,
+site_ibiden_gama,ibiden,SITE_OF,operates,,,high,2026-09,https://www.ibiden.com/company/2026/02/notice-regarding-capital-investment-plan-for-high-performance-ic-package-substrates.html,,,
+site_ibiden_ono,country_JP,LOCATED_IN,,,,high,2026-09,,,,
+site_ibiden_ono,ibiden,SITE_OF,operates,,,high,2026-09,https://www.ibiden.com/company/2026/02/notice-regarding-capital-investment-plan-for-high-performance-ic-package-substrates.html,,,
+site_unimicron_yangmei,country_TW,LOCATED_IN,,,,high,2026-09,,,,
+site_unimicron_yangmei,unimicron,SITE_OF,operates,,,medium,2026-09,https://www.gate.com/blog/why-abf-substrates-have-become-a-bottleneck-in-the-ai-gpu-supply-chain-2028-shortage-analysis,,,
+site_kinsus_taoyuan,country_TW,LOCATED_IN,,,,high,2026-09,,,,
+site_kinsus_taoyuan,kinsus,SITE_OF,operates,,,low,2026-09,,,,
+site_ats_kulim,country_MY,LOCATED_IN,,,,high,2026-09,,,,
+site_ats_kulim,ats,SITE_OF,operates,,,low,2026-09,,,,
+site_ajinomoto_kawasaki,country_JP,LOCATED_IN,,,,high,2026-09,,,,
+site_ajinomoto_kawasaki,ajinomoto,SITE_OF,operates,,,high,2026-09,https://www.ajinomoto.com/cms_wp_ajnmt_global/wp-content/uploads/pdf/2026_05_07_02E.pdf,,,
+site_ajinomoto_gunma,country_JP,LOCATED_IN,,,,high,2026-09,,,,
+site_ajinomoto_gunma,ajinomoto,SITE_OF,operates,,,high,2026-09,https://www.ajinomoto.com/cms_wp_ajnmt_global/wp-content/uploads/pdf/2026_05_07_02E.pdf,,,
+site_ajinomoto_kani,country_JP,LOCATED_IN,,,,high,2026-09,,,,
+site_ajinomoto_kani,ajinomoto,SITE_OF,operates,,,high,2026-09,https://www.ajinomoto.com/cms_wp_ajnmt_global/wp-content/uploads/pdf/2026_05_07_02E.pdf,,,
+site_wistron_fort_worth,country_US,LOCATED_IN,,,,high,2026-09,,,,
+site_wistron_fort_worth,wistron,SITE_OF,operates,,,high,2026-09,https://www.trendforce.com/news/2026/07/22/news-wistron-produces-first-u-s-made-gb300-baseboard-d1-factory-represents-just-5-of-nvidias-output/,,,
+site_foxconn_guadalajara,country_MX,LOCATED_IN,,,,high,2026-09,,,,
+site_foxconn_guadalajara,foxconn,SITE_OF,operates,,,high,2026-09,https://mexiconewsdaily.com/business/foxconn-nvidia-mexico-superchip-plant/,,,
+site_foxconn_houston,country_US,LOCATED_IN,,,,high,2026-09,,,,
+site_foxconn_houston,foxconn,SITE_OF,operates,,,low,2026-09,,,,
+site_asml_veldhoven,country_NL,LOCATED_IN,,,,high,2026-09,,,,
+site_asml_veldhoven,asml,SITE_OF,operates,,,high,2026-09,https://en.wikipedia.org/wiki/ASML_Holding,,,
+site_zeiss_oberkochen,country_DE,LOCATED_IN,,,,high,2026-09,,,,
+site_zeiss_oberkochen,zeiss_smt,SITE_OF,operates,,,high,2026-09,https://www.sec.gov/Archives/edgar/data/0000937966/000119312513053249/d347771d20f.htm,,,
+site_zeiss_wetzlar,country_DE,LOCATED_IN,,,,high,2026-09,,,,
+site_zeiss_wetzlar,zeiss_smt,SITE_OF,operates,,,high,2026-09,https://www.sec.gov/Archives/edgar/data/0000937966/000119312513053249/d347771d20f.htm,,,
+site_trumpf_ditzingen,country_DE,LOCATED_IN,,,,high,2026-09,,,,
+site_trumpf_ditzingen,trumpf,SITE_OF,operates,,,medium,2026-09,https://www.zeiss.com/semiconductor-manufacturing-technology/smt-magazine/euv-lithography-as-an-european-joint-project.html,,,
+site_cymer_san_diego,country_US,LOCATED_IN,,,,high,2026-09,,,,
+site_cymer_san_diego,cymer,SITE_OF,operates,,,medium,2026-09,https://lightsource.ai/blog/asml-vs-china-chip-equipment-supply-chains,,,
+site_hanmi_incheon,country_KR,LOCATED_IN,,,,high,2026-09,,,,
+site_hanmi_incheon,hanmi,SITE_OF,operates,,,low,2026-09,,,,
+site_disco_hiroshima,country_JP,LOCATED_IN,,,,high,2026-09,,,,
+site_disco_hiroshima,disco,SITE_OF,operates,,,low,2026-09,,,,
+site_globalwafers_sherman,globalwafers,SITE_OF,operates,,,high,2026-09,https://www.fortunebusinessinsights.com/silicon-wafers-market-116434,,,
+site_globalwafers_hsinchu,country_TW,LOCATED_IN,,,,high,2026-09,,,,
+site_globalwafers_hsinchu,globalwafers,SITE_OF,operates,,,low,2026-09,,,,
+site_seh_shirakawa,country_JP,LOCATED_IN,,,,high,2026-09,,,,
+site_seh_shirakawa,shin_etsu,SITE_OF,operates,,,low,2026-09,,,,
+site_sumco_imari,country_JP,LOCATED_IN,,,,high,2026-09,,,,
+site_sumco_imari,sumco,SITE_OF,operates,,,low,2026-09,,,,
+site_siltronic_freiberg,country_DE,LOCATED_IN,,,,high,2026-09,,,,
+site_siltronic_freiberg,siltronic,SITE_OF,operates,,,low,2026-09,,,,
+site_sk_siltron_gumi,country_KR,LOCATED_IN,,,,high,2026-09,,,,
+site_sk_siltron_gumi,sk_siltron,SITE_OF,operates,,,low,2026-09,,,,
+site_wacker_burghausen,country_DE,LOCATED_IN,,,,high,2026-09,,,,
+site_wacker_burghausen,wacker,SITE_OF,operates,,,medium,2026-09,https://www.mordorintelligence.com/industry-reports/quartz-market/companies,,,
+site_hemlock_michigan,country_US,LOCATED_IN,,,,high,2026-09,,,,
+site_hemlock_michigan,hemlock,SITE_OF,operates,,,low,2026-09,,,,
+site_spruce_pine,country_US,LOCATED_IN,,,,high,2026-09,,,,
+site_spruce_pine,sibelco,SITE_OF,operates,,,high,2026-09,https://en.wikipedia.org/wiki/High-purity_quartz,,,
+site_spruce_pine,quartz_corp,SITE_OF,operates,,,high,2026-09,https://en.wikipedia.org/wiki/High-purity_quartz,,,
+site_tok_kanagawa,country_JP,LOCATED_IN,,,,high,2026-09,,,,
+site_tok_kanagawa,tok,SITE_OF,operates,,,low,2026-09,,,,
+site_ras_laffan,country_QA,LOCATED_IN,,,,high,2026-09,,,,
+site_ras_laffan,qatarenergy,SITE_OF,operates,,,high,2026-09,https://www.fusionww.com/insights/helium-shortage-2026,,,
+site_us_helium_texas,country_US,LOCATED_IN,,,,high,2026-09,,,,
+site_us_helium_texas,air_products,SITE_OF,operates,,,low,2026-09,,,,
+fab_intel_52,intel,SITE_OF,operates,,,low,2026-09,,,,
+ev_2026_helium_qatar,cp_hormuz,AFFECTS,,,,high,2026-09,https://valuechainasia.com/articles/technology/tsmc-helium-shortage-semiconductor-supply-chain-2026,Strait closed to normal commercial traffic; ~200 helium ISO containers stranded.,,
+ev_2026_helium_qatar,site_ras_laffan,AFFECTS,,,,high,2026-09,https://www.fusionww.com/insights/helium-shortage-2026,,,
+lane_tsmc18_ap8,fab_tsmc_18,FROM_SITE,,,,medium,2026-09,https://www.cnbc.com/2026/04/08/tsmc-nvidia-advanced-packaging-intel.html,,,
+lane_tsmc18_ap8,site_tsmc_ap8_tainan,TO_SITE,,,,medium,2026-09,https://www.cnbc.com/2026/04/08/tsmc-nvidia-advanced-packaging-intel.html,,,
+lane_tsmc18_ap7,fab_tsmc_18,FROM_SITE,,,,medium,2026-09,https://www.trendforce.com/news/2025/12/04/news-tsmc-speeds-advanced-packaging-ap7-targets-2026-output-arizona-p6-eyed-for-u-s-packaging-hub/,,,
+lane_tsmc18_ap7,site_tsmc_ap7,TO_SITE,,,,medium,2026-09,https://www.trendforce.com/news/2025/12/04/news-tsmc-speeds-advanced-packaging-ap7-targets-2026-output-arizona-p6-eyed-for-u-s-packaging-hub/,,,
+lane_tsmc18_ap6,fab_tsmc_18,FROM_SITE,,,,medium,2026-09,https://aiinasia.com/greater-china/tsmc-cowos-ai-packaging-capacity-taiwan-supply-chain-2026,,,
+lane_tsmc18_ap6,site_tsmc_ap6_zhunan,TO_SITE,,,,medium,2026-09,https://aiinasia.com/greater-china/tsmc-cowos-ai-packaging-capacity-taiwan-supply-chain-2026,,,
+lane_tsmc20_ap6,fab_tsmc_20,FROM_SITE,,,,medium,2026-09,https://aiinasia.com/greater-china/tsmc-cowos-ai-packaging-capacity-taiwan-supply-chain-2026,,,
+lane_tsmc20_ap6,site_tsmc_ap6_zhunan,TO_SITE,,,,medium,2026-09,https://aiinasia.com/greater-china/tsmc-cowos-ai-packaging-capacity-taiwan-supply-chain-2026,,,
+lane_tsmc22_ap8,fab_tsmc_22,FROM_SITE,,,,medium,2026-09,https://aiinasia.com/greater-china/tsmc-cowos-ai-packaging-capacity-taiwan-supply-chain-2026,,,
+lane_tsmc22_ap8,site_tsmc_ap8_tainan,TO_SITE,,,,medium,2026-09,https://aiinasia.com/greater-china/tsmc-cowos-ai-packaging-capacity-taiwan-supply-chain-2026,,,
+lane_tsmcaz_ap6,fab_tsmc_21_az,FROM_SITE,,,,medium,2026-09,https://www.cnbc.com/2026/04/08/tsmc-nvidia-advanced-packaging-intel.html,,,
+lane_tsmcaz_ap6,site_tsmc_ap6_zhunan,TO_SITE,,,,medium,2026-09,https://www.cnbc.com/2026/04/08/tsmc-nvidia-advanced-packaging-intel.html,,,
+lane_tsmcaz_ap6,hub_phx,VIA,stop 1,,,medium,2026-09,https://www.cnbc.com/2026/04/08/tsmc-nvidia-advanced-packaging-intel.html,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_tsmcaz_ap6,hub_tpe,VIA,stop 2,,,medium,2026-09,https://www.cnbc.com/2026/04/08/tsmc-nvidia-advanced-packaging-intel.html,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_skh_hbm_ap6,site_skh_cheongju_pt,FROM_SITE,,,,medium,2026-09,https://www.hardwareluxx.de/index.php/news/hardware/arbeitsspeicher/68580-hbm4-und-ddr5-amd-und-samsung-kooperieren-f%C3%BCr-instinct-mi455x-und-epyc-venice.html,,,
+lane_skh_hbm_ap6,site_tsmc_ap6_zhunan,TO_SITE,,,,medium,2026-09,https://www.hardwareluxx.de/index.php/news/hardware/arbeitsspeicher/68580-hbm4-und-ddr5-amd-und-samsung-kooperieren-f%C3%BCr-instinct-mi455x-und-epyc-venice.html,,,
+lane_skh_hbm_ap6,hub_icn,VIA,stop 1,,,medium,2026-09,https://www.hardwareluxx.de/index.php/news/hardware/arbeitsspeicher/68580-hbm4-und-ddr5-amd-und-samsung-kooperieren-f%C3%BCr-instinct-mi455x-und-epyc-venice.html,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_skh_hbm_ap6,hub_tpe,VIA,stop 2,,,medium,2026-09,https://www.hardwareluxx.de/index.php/news/hardware/arbeitsspeicher/68580-hbm4-und-ddr5-amd-und-samsung-kooperieren-f%C3%BCr-instinct-mi455x-und-epyc-venice.html,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_skh_icheon_ap8,site_skh_icheon,FROM_SITE,,,,medium,2026-09,https://www.hardwareluxx.de/index.php/news/hardware/arbeitsspeicher/68580-hbm4-und-ddr5-amd-und-samsung-kooperieren-f%C3%BCr-instinct-mi455x-und-epyc-venice.html,,,
+lane_skh_icheon_ap8,site_tsmc_ap8_tainan,TO_SITE,,,,medium,2026-09,https://www.hardwareluxx.de/index.php/news/hardware/arbeitsspeicher/68580-hbm4-und-ddr5-amd-und-samsung-kooperieren-f%C3%BCr-instinct-mi455x-und-epyc-venice.html,,,
+lane_skh_icheon_ap8,hub_icn,VIA,stop 1,,,medium,2026-09,https://www.hardwareluxx.de/index.php/news/hardware/arbeitsspeicher/68580-hbm4-und-ddr5-amd-und-samsung-kooperieren-f%C3%BCr-instinct-mi455x-und-epyc-venice.html,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_skh_icheon_ap8,hub_tpe,VIA,stop 2,,,medium,2026-09,https://www.hardwareluxx.de/index.php/news/hardware/arbeitsspeicher/68580-hbm4-und-ddr5-amd-und-samsung-kooperieren-f%C3%BCr-instinct-mi455x-und-epyc-venice.html,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_samsung_hbm_ap6,site_samsung_onyang,FROM_SITE,,,,medium,2026-09,https://www.hardwareluxx.de/index.php/news/hardware/arbeitsspeicher/68580-hbm4-und-ddr5-amd-und-samsung-kooperieren-f%C3%BCr-instinct-mi455x-und-epyc-venice.html,,,
+lane_samsung_hbm_ap6,site_tsmc_ap6_zhunan,TO_SITE,,,,medium,2026-09,https://www.hardwareluxx.de/index.php/news/hardware/arbeitsspeicher/68580-hbm4-und-ddr5-amd-und-samsung-kooperieren-f%C3%BCr-instinct-mi455x-und-epyc-venice.html,,,
+lane_samsung_hbm_ap6,hub_icn,VIA,stop 1,,,medium,2026-09,https://www.hardwareluxx.de/index.php/news/hardware/arbeitsspeicher/68580-hbm4-und-ddr5-amd-und-samsung-kooperieren-f%C3%BCr-instinct-mi455x-und-epyc-venice.html,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_samsung_hbm_ap6,hub_tpe,VIA,stop 2,,,medium,2026-09,https://www.hardwareluxx.de/index.php/news/hardware/arbeitsspeicher/68580-hbm4-und-ddr5-amd-und-samsung-kooperieren-f%C3%BCr-instinct-mi455x-und-epyc-venice.html,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_micron_hbm_ap6,site_micron_taichung,FROM_SITE,,,,low,2026-09,,,,
+lane_micron_hbm_ap6,site_tsmc_ap6_zhunan,TO_SITE,,,,low,2026-09,,,,
+lane_ssf_basedie,site_samsung_hwaseong,FROM_SITE,,,,low,2026-09,,,,
+lane_ssf_basedie,site_samsung_onyang,TO_SITE,,,,low,2026-09,,,,
+lane_ibiden_ap6,site_ibiden_gama,FROM_SITE,,,,low,2026-09,,,,
+lane_ibiden_ap6,site_tsmc_ap6_zhunan,TO_SITE,,,,low,2026-09,,,,
+lane_ibiden_ap6,hub_ngo,VIA,stop 1,,,low,2026-09,,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_ibiden_ap6,hub_tpe,VIA,stop 2,,,low,2026-09,,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_unimicron_ap6,site_unimicron_yangmei,FROM_SITE,,,,low,2026-09,,,,
+lane_unimicron_ap6,site_tsmc_ap6_zhunan,TO_SITE,,,,low,2026-09,,,,
+lane_kinsus_ap6,site_kinsus_taoyuan,FROM_SITE,,,,low,2026-09,,,,
+lane_kinsus_ap6,site_tsmc_ap6_zhunan,TO_SITE,,,,low,2026-09,,,,
+lane_ajinomoto_ibiden,site_ajinomoto_gunma,FROM_SITE,,,,low,2026-09,,,,
+lane_ajinomoto_ibiden,site_ibiden_gama,TO_SITE,,,,low,2026-09,,,,
+lane_ajinomoto_unimicron,site_ajinomoto_kawasaki,FROM_SITE,,,,low,2026-09,,,,
+lane_ajinomoto_unimicron,site_unimicron_yangmei,TO_SITE,,,,low,2026-09,,,,
+lane_ajinomoto_unimicron,hub_nrt,VIA,stop 1,,,low,2026-09,,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_ajinomoto_unimicron,hub_tpe,VIA,stop 2,,,low,2026-09,,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_ap6_wistron,site_tsmc_ap6_zhunan,FROM_SITE,,,,medium,2026-09,https://www.stattimes.com/amp/air-cargo/dimerco-taiwan-ai-cargo-demand-keeps-asia-pacific-airfreight-tight-1359680,,,
+lane_ap6_wistron,site_wistron_fort_worth,TO_SITE,,,,medium,2026-09,https://www.stattimes.com/amp/air-cargo/dimerco-taiwan-ai-cargo-demand-keeps-asia-pacific-airfreight-tight-1359680,,,
+lane_ap6_wistron,hub_tpe,VIA,stop 1,,,medium,2026-09,https://www.stattimes.com/amp/air-cargo/dimerco-taiwan-ai-cargo-demand-keeps-asia-pacific-airfreight-tight-1359680,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_ap6_wistron,hub_dfw,VIA,stop 2,,,medium,2026-09,https://www.stattimes.com/amp/air-cargo/dimerco-taiwan-ai-cargo-demand-keeps-asia-pacific-airfreight-tight-1359680,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_ap6_foxconn_gdl,site_tsmc_ap6_zhunan,FROM_SITE,,,,medium,2026-09,https://www.stattimes.com/amp/air-cargo/dimerco-taiwan-ai-cargo-demand-keeps-asia-pacific-airfreight-tight-1359680,,,
+lane_ap6_foxconn_gdl,site_foxconn_guadalajara,TO_SITE,,,,medium,2026-09,https://www.stattimes.com/amp/air-cargo/dimerco-taiwan-ai-cargo-demand-keeps-asia-pacific-airfreight-tight-1359680,,,
+lane_ap6_foxconn_gdl,hub_tpe,VIA,stop 1,,,medium,2026-09,https://www.stattimes.com/amp/air-cargo/dimerco-taiwan-ai-cargo-demand-keeps-asia-pacific-airfreight-tight-1359680,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_ap6_foxconn_gdl,hub_gdl,VIA,stop 2,,,medium,2026-09,https://www.stattimes.com/amp/air-cargo/dimerco-taiwan-ai-cargo-demand-keeps-asia-pacific-airfreight-tight-1359680,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_ap6_foxconn_hou,site_tsmc_ap6_zhunan,FROM_SITE,,,,low,2026-09,,,,
+lane_ap6_foxconn_hou,site_foxconn_houston,TO_SITE,,,,low,2026-09,,,,
+lane_ap6_foxconn_hou,hub_tpe,VIA,stop 1,,,low,2026-09,,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_ap6_foxconn_hou,hub_iah,VIA,stop 2,,,low,2026-09,,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_asml_tsmc20,site_asml_veldhoven,FROM_SITE,,,,high,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,
+lane_asml_tsmc20,fab_tsmc_20,TO_SITE,,,,high,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,
+lane_asml_tsmc20,hub_ams,VIA,stop 1,,,high,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_asml_tsmc20,hub_tpe,VIA,stop 2,,,high,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_asml_tsmc18,site_asml_veldhoven,FROM_SITE,,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,
+lane_asml_tsmc18,fab_tsmc_18,TO_SITE,,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,
+lane_asml_tsmc18,hub_ams,VIA,stop 1,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_asml_tsmc18,hub_tpe,VIA,stop 2,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_asml_tsmc22,site_asml_veldhoven,FROM_SITE,,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,
+lane_asml_tsmc22,fab_tsmc_22,TO_SITE,,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,
+lane_asml_tsmc22,hub_ams,VIA,stop 1,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_asml_tsmc22,hub_tpe,VIA,stop 2,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_asml_tsmcaz,site_asml_veldhoven,FROM_SITE,,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,
+lane_asml_tsmcaz,fab_tsmc_21_az,TO_SITE,,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,
+lane_asml_tsmcaz,hub_ams,VIA,stop 1,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_asml_tsmcaz,hub_phx,VIA,stop 2,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_asml_skh,site_asml_veldhoven,FROM_SITE,,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,
+lane_asml_skh,fab_skh_m15x,TO_SITE,,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,
+lane_asml_skh,hub_ams,VIA,stop 1,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_asml_skh,hub_icn,VIA,stop 2,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_asml_samsung,site_asml_veldhoven,FROM_SITE,,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,
+lane_asml_samsung,fab_samsung_pyeongtaek,TO_SITE,,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,
+lane_asml_samsung,hub_ams,VIA,stop 1,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_asml_samsung,hub_icn,VIA,stop 2,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_asml_intel,site_asml_veldhoven,FROM_SITE,,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,
+lane_asml_intel,fab_intel_52,TO_SITE,,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,
+lane_asml_intel,hub_ams,VIA,stop 1,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_asml_intel,hub_phx,VIA,stop 2,,,medium,2026-09,https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_zeiss_ok_asml,site_zeiss_oberkochen,FROM_SITE,,,,medium,2026-09,https://www.sec.gov/Archives/edgar/data/0000937966/000119312513053249/d347771d20f.htm,,,
+lane_zeiss_ok_asml,site_asml_veldhoven,TO_SITE,,,,medium,2026-09,https://www.sec.gov/Archives/edgar/data/0000937966/000119312513053249/d347771d20f.htm,,,
+lane_zeiss_wz_asml,site_zeiss_wetzlar,FROM_SITE,,,,medium,2026-09,https://www.sec.gov/Archives/edgar/data/0000937966/000119312513053249/d347771d20f.htm,,,
+lane_zeiss_wz_asml,site_asml_veldhoven,TO_SITE,,,,medium,2026-09,https://www.sec.gov/Archives/edgar/data/0000937966/000119312513053249/d347771d20f.htm,,,
+lane_trumpf_asml,site_trumpf_ditzingen,FROM_SITE,,,,low,2026-09,,,,
+lane_trumpf_asml,site_asml_veldhoven,TO_SITE,,,,low,2026-09,,,,
+lane_cymer_asml,site_cymer_san_diego,FROM_SITE,,,,low,2026-09,,,,
+lane_cymer_asml,site_asml_veldhoven,TO_SITE,,,,low,2026-09,,,,
+lane_cymer_asml,hub_lax,VIA,stop 1,,,low,2026-09,,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_cymer_asml,hub_ams,VIA,stop 2,,,low,2026-09,,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_helium_qa_tsmc,site_ras_laffan,FROM_SITE,,,,high,2026-09,https://valuechainasia.com/articles/technology/tsmc-helium-shortage-semiconductor-supply-chain-2026,,,
+lane_helium_qa_tsmc,fab_tsmc_18,TO_SITE,,,,high,2026-09,https://valuechainasia.com/articles/technology/tsmc-helium-shortage-semiconductor-supply-chain-2026,,,
+lane_helium_qa_tsmc,port_ras_laffan,VIA,stop 1,,,high,2026-09,https://valuechainasia.com/articles/technology/tsmc-helium-shortage-semiconductor-supply-chain-2026,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_helium_qa_tsmc,port_kaohsiung,VIA,stop 2,,,high,2026-09,https://valuechainasia.com/articles/technology/tsmc-helium-shortage-semiconductor-supply-chain-2026,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""sea""}"
+lane_helium_qa_tsmc,cp_hormuz,VIA,stop 3,,,medium,2026-09,,Computed: sea route passes within the chokepoint radius.,,"{""seq"": 3, ""kind"": ""chokepoint"", ""leg_mode"": ""sea""}"
+lane_helium_qa_tsmc,cp_malacca,VIA,stop 4,,,medium,2026-09,,Computed: sea route passes within the chokepoint radius.,,"{""seq"": 4, ""kind"": ""chokepoint"", ""leg_mode"": ""sea""}"
+lane_helium_qa_tsmc,cp_luzon,VIA,stop 5,,,medium,2026-09,,Computed: sea route passes within the chokepoint radius.,,"{""seq"": 5, ""kind"": ""chokepoint"", ""leg_mode"": ""sea""}"
+lane_helium_qa_skh,site_ras_laffan,FROM_SITE,,,,high,2026-09,https://valuechainasia.com/articles/technology/tsmc-helium-shortage-semiconductor-supply-chain-2026,,,
+lane_helium_qa_skh,site_skh_icheon,TO_SITE,,,,high,2026-09,https://valuechainasia.com/articles/technology/tsmc-helium-shortage-semiconductor-supply-chain-2026,,,
+lane_helium_qa_skh,port_ras_laffan,VIA,stop 1,,,high,2026-09,https://valuechainasia.com/articles/technology/tsmc-helium-shortage-semiconductor-supply-chain-2026,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_helium_qa_skh,port_busan,VIA,stop 2,,,high,2026-09,https://valuechainasia.com/articles/technology/tsmc-helium-shortage-semiconductor-supply-chain-2026,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""sea""}"
+lane_helium_qa_skh,cp_hormuz,VIA,stop 3,,,medium,2026-09,,Computed: sea route passes within the chokepoint radius.,,"{""seq"": 3, ""kind"": ""chokepoint"", ""leg_mode"": ""sea""}"
+lane_helium_qa_skh,cp_malacca,VIA,stop 4,,,medium,2026-09,,Computed: sea route passes within the chokepoint radius.,,"{""seq"": 4, ""kind"": ""chokepoint"", ""leg_mode"": ""sea""}"
+lane_helium_qa_skh,cp_taiwan_strait,VIA,stop 5,,,medium,2026-09,,Computed: sea route passes within the chokepoint radius.,,"{""seq"": 5, ""kind"": ""chokepoint"", ""leg_mode"": ""sea""}"
+lane_helium_qa_samsung,site_ras_laffan,FROM_SITE,,,,high,2026-09,https://valuechainasia.com/articles/technology/tsmc-helium-shortage-semiconductor-supply-chain-2026,,,
+lane_helium_qa_samsung,fab_samsung_pyeongtaek,TO_SITE,,,,high,2026-09,https://valuechainasia.com/articles/technology/tsmc-helium-shortage-semiconductor-supply-chain-2026,,,
+lane_helium_qa_samsung,port_ras_laffan,VIA,stop 1,,,high,2026-09,https://valuechainasia.com/articles/technology/tsmc-helium-shortage-semiconductor-supply-chain-2026,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_helium_qa_samsung,port_busan,VIA,stop 2,,,high,2026-09,https://valuechainasia.com/articles/technology/tsmc-helium-shortage-semiconductor-supply-chain-2026,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""sea""}"
+lane_helium_qa_samsung,cp_hormuz,VIA,stop 3,,,medium,2026-09,,Computed: sea route passes within the chokepoint radius.,,"{""seq"": 3, ""kind"": ""chokepoint"", ""leg_mode"": ""sea""}"
+lane_helium_qa_samsung,cp_malacca,VIA,stop 4,,,medium,2026-09,,Computed: sea route passes within the chokepoint radius.,,"{""seq"": 4, ""kind"": ""chokepoint"", ""leg_mode"": ""sea""}"
+lane_helium_qa_samsung,cp_taiwan_strait,VIA,stop 5,,,medium,2026-09,,Computed: sea route passes within the chokepoint radius.,,"{""seq"": 5, ""kind"": ""chokepoint"", ""leg_mode"": ""sea""}"
+lane_helium_us_skh,site_us_helium_texas,FROM_SITE,,,,medium,2026-09,https://www.thelec.net/news/articleView.html?idxno=6422,,,
+lane_helium_us_skh,site_skh_icheon,TO_SITE,,,,medium,2026-09,https://www.thelec.net/news/articleView.html?idxno=6422,,,
+lane_helium_us_skh,port_houston,VIA,stop 1,,,medium,2026-09,https://www.thelec.net/news/articleView.html?idxno=6422,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_helium_us_skh,port_busan,VIA,stop 2,,,medium,2026-09,https://www.thelec.net/news/articleView.html?idxno=6422,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""sea""}"
+lane_helium_us_skh,cp_panama,VIA,stop 3,,,medium,2026-09,,Computed: sea route passes within the chokepoint radius.,,"{""seq"": 3, ""kind"": ""chokepoint"", ""leg_mode"": ""sea""}"
+lane_quartz_seh,site_spruce_pine,FROM_SITE,,,,low,2026-09,,,,
+lane_quartz_seh,site_seh_shirakawa,TO_SITE,,,,low,2026-09,,,,
+lane_quartz_seh,port_charleston,VIA,stop 1,,,low,2026-09,,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_quartz_seh,port_yokohama,VIA,stop 2,,,low,2026-09,,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""sea""}"
+lane_quartz_seh,cp_panama,VIA,stop 3,,,medium,2026-09,,Computed: sea route passes within the chokepoint radius.,,"{""seq"": 3, ""kind"": ""chokepoint"", ""leg_mode"": ""sea""}"
+lane_poly_seh,site_wacker_burghausen,FROM_SITE,,,,low,2026-09,,,,
+lane_poly_seh,site_seh_shirakawa,TO_SITE,,,,low,2026-09,,,,
+lane_poly_seh,port_rotterdam,VIA,stop 1,,,low,2026-09,,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_poly_seh,port_yokohama,VIA,stop 2,,,low,2026-09,,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""sea""}"
+lane_poly_seh,cp_malacca,VIA,stop 3,,,medium,2026-09,,Computed: sea route passes within the chokepoint radius.,,"{""seq"": 3, ""kind"": ""chokepoint"", ""leg_mode"": ""sea""}"
+lane_poly_seh,cp_luzon,VIA,stop 4,,,medium,2026-09,,Computed: sea route passes within the chokepoint radius.,,"{""seq"": 4, ""kind"": ""chokepoint"", ""leg_mode"": ""sea""}"
+lane_poly_seh,cp_bab_el_mandeb,VIA,stop 5,,,medium,2026-09,,Computed: sea route passes within the chokepoint radius.,,"{""seq"": 5, ""kind"": ""chokepoint"", ""leg_mode"": ""sea""}"
+lane_poly_seh,cp_suez,VIA,stop 6,,,medium,2026-09,,Computed: sea route passes within the chokepoint radius.,,"{""seq"": 6, ""kind"": ""chokepoint"", ""leg_mode"": ""sea""}"
+lane_poly_seh,cp_gibraltar,VIA,stop 7,,,medium,2026-09,,Computed: sea route passes within the chokepoint radius.,,"{""seq"": 7, ""kind"": ""chokepoint"", ""leg_mode"": ""sea""}"
+lane_wafer_seh_tsmc,site_seh_shirakawa,FROM_SITE,,,,low,2026-09,,,,
+lane_wafer_seh_tsmc,fab_tsmc_18,TO_SITE,,,,low,2026-09,,,,
+lane_wafer_seh_tsmc,hub_nrt,VIA,stop 1,,,low,2026-09,,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_wafer_seh_tsmc,hub_tpe,VIA,stop 2,,,low,2026-09,,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
+lane_wafer_gw_tsmcaz,site_globalwafers_sherman,FROM_SITE,,,,low,2026-09,,,,
+lane_wafer_gw_tsmcaz,fab_tsmc_21_az,TO_SITE,,,,low,2026-09,,,,
+lane_wafer_gw_tsmc20,site_globalwafers_hsinchu,FROM_SITE,,,,low,2026-09,,,,
+lane_wafer_gw_tsmc20,fab_tsmc_20,TO_SITE,,,,low,2026-09,,,,
+lane_resist_tok_tsmc,site_tok_kanagawa,FROM_SITE,,,,low,2026-09,,,,
+lane_resist_tok_tsmc,fab_tsmc_18,TO_SITE,,,,low,2026-09,,,,
+lane_resist_tok_tsmc,hub_nrt,VIA,stop 1,,,low,2026-09,,,,"{""seq"": 1, ""kind"": ""hub"", ""leg_mode"": ""road""}"
+lane_resist_tok_tsmc,hub_tpe,VIA,stop 2,,,low,2026-09,,,,"{""seq"": 2, ""kind"": ""hub"", ""leg_mode"": ""air""}"
