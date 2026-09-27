@@ -1,0 +1,205 @@
+id,label,name,category,country,ticker,description,source_url,extra_labels,props
+advantest,Company,,,,,,,,
+nvidia,Company,,,,,,,,
+synopsys,Company,,,,,,,,
+microsoft,Company,,,,,,,,
+ct_server_cpu,ChipType,,,,,,,,
+arm,Company,,,,,,,,
+infineon,Company,,,,,,,,
+ct_power_semi,ChipType,,,,,,,,
+mps,Company,,,,,,,,
+sk_hynix,Company,,,,,,,,
+nittobo,Company,,,,,,,,
+ibiden,Company,,,,,,,,
+unimicron,Company,,,,,,,,
+kinsus,Company,,,,,,,,
+broadcom,Company,,,,,,,,
+ats,Company,,,,,,,,
+amd,Company,,,,,,,,
+globalwafers,Company,,,,,,,,
+micron,Company,,,,,,,,
+agc,Company,,,,,,,,
+tsmc,Company,,,,,,,,
+samsung_foundry,Company,,,,,,,,
+intel,Company,,,,,,,,
+hoya,Company,,,,,,,,
+marvell,Company,,,,,,,,
+innolight,Company,,,,,,,,
+eoptolink,Company,,,,,,,,
+country_UA,Country,,,,,,,,
+rm_neon,RawMaterial,,,,,,,,
+country_CN,Country,,,,,,,,
+linde,Company,,,,,,,,
+fab_samsung_pyeongtaek,Fab,,,,,,,,"{""confidence"": ""medium""}"
+samsung_memory,Company,,,,,,,,
+fab_intel_52,Fab,,,,,,https://www.datacenterdynamics.com/en/news/intel-details-clearwater-forest-data-center-processor-architecture-announces-new-arizona-fab-52-is-fully-operational/,,"{""confidence"": ""high""}"
+tokyo_electron,Company,,,,,"Coater/developers (~100% of EUV tracks), etch, deposition, cleaning; CoWoS/CoPoS lithography tracks.",,,
+lam_research,Company,,,,,,,,
+applied_materials,Company,,,,,,,,
+kla,Company,,,,,,,,
+ct_ai_gpu,ChipType,AI GPU / merchant accelerator,,,,"Merchant AI accelerators: Nvidia Blackwell/Rubin and Groq-based LPUs, AMD Instinct, Cerebras, Huawei Ascend, Cambricon.",,,
+asml,Company,,,,,Sole EUV scanner supplier; 21.2% of 2025 WFE. 2026 sales guidance €43-45bn (July 2026); plans ~30% more low-NA EUV capacity for 2027 (80-90 systems/yr). Intel first to ship high-volume logic on High-NA EXE:5200B.,https://www.techreaderdaily.com/article/asml-lifts-guidance-to-45-billion-as-supply-chain-struggles,,
+ev_2026_intel_18a,DisruptionEvent,,,,,"Update Sept 2026: 18A is in high-volume production at Fab 52 (Panther Lake shipping, Xeon 6+ announced June 2026); Xeon 7 Diamond Rapids timing still open.",https://whatledto.com/events/intel-foundry-18a,,"{""status"": ""monitoring""}"
+site_trumpf_ditzingen,Site,,,,,CO2 drive lasers for EUV (30 kW). Named with Zeiss Oberkochen as an EUV supply bottleneck (July 2026).,https://www.techreaderdaily.com/article/asml-lifts-guidance-to-45-billion-as-supply-chain-struggles,,"{""confidence"": ""high""}"
+lane_ap6_wistron,Lane,,,,,Chips are Nvidia-owned; TSMC is the physical shipper from Taiwan. In practice packaged GPUs normally pass final test and burn-in (e.g. KYEC in Miaoli) before export — see lane_ap6_kyec.,,,
+lane_ap6_foxconn_gdl,Lane,,,,,Chips are Nvidia-owned; TSMC is the physical shipper from Taiwan. In practice packaged GPUs normally pass final test and burn-in (e.g. KYEC in Miaoli) before export — see lane_ap6_kyec.,,,
+lane_ap6_foxconn_hou,Lane,,,,,Chips are Nvidia-owned; TSMC is the physical shipper from Taiwan. In practice packaged GPUs normally pass final test and burn-in (e.g. KYEC in Miaoli) before export — see lane_ap6_kyec.,,,
+country_CA,Country,Canada,Country,CA,,,,,
+country_TH,Country,Thailand,Country,TH,,,,,
+country_CH,Country,Switzerland,Country,CH,,,,,
+country_CD,Country,DR Congo,Country,CD,,,,,
+country_RW,Country,Rwanda,Country,RW,,,,,
+country_IT,Country,Italy,Country,IT,,,,,
+ct_bmc,ChipType,Baseboard management controller (BMC),Logic / server management,,,Out-of-band server management SoC on every server board; GB300 racks use dozens per rack.,,,
+vertical_datacenter_ai,EndMarketVertical,,,,,,,,
+oracle,Company,Oracle (OCI),Datacenter operator / cloud,US,ORCL,"Operates Stargate datacenters for OpenAI; FY2027 capex up to ~$95bn gross, net ≤$70bn.",,,
+country_US,Country,,,,,,,,
+coreweave,Company,CoreWeave,Datacenter operator / neocloud,US,CRWV,GPU cloud; 2026 capex guidance $35-39bn (Aug 2026).,,,
+nebius,Company,Nebius Group,Datacenter operator / neocloud,NL,NBIS,GPU cloud; 2026 capex $20-25bn; 5 GW contracted power target.,,,
+country_NL,Country,,,,,,,,
+xai,Company,xAI,AI lab / datacenter operator,US,,Colossus 1/2 supercomputers in Memphis.,,,
+quanta,Company,Quanta Computer (QCT),Server / rack assembly (ODM),TW,2382.TW,Nvidia GB200/GB300 rack ODM (~19% share 2025); Tennessee expansion.,,,
+country_TW,Country,,,,,,,,
+wiwynn,Company,Wiwynn,Server / rack assembly (ODM),TW,6669.TW,"Wistron subsidiary; hyperscale servers/racks for Microsoft, Meta, AWS.",,,
+celestica,Company,Celestica,Server / rack assembly (EMS),CA,CLS,PCB assembly and rack integration for Google TPU pods; OCS switch manufacturing.,,,
+dell,Company,Dell Technologies,Server OEM,US,DELL,Delivered first GB300 NVL72 to CoreWeave; xAI Colossus supplier.,,,
+supermicro,Company,Supermicro,Server OEM,US,SMCI,"Liquid-cooled AI racks (~5,000 racks/month capacity); xAI supplier.",,,
+aspeed,Company,Aspeed Technology,BMC designer (fabless),TW,5274.TW,~80% of global BMC market (July 2026).,,,
+texas_instruments,Company,Texas Instruments,Power semiconductor maker,US,TXN,"800V hot-swap, bus converters, multiphase buck converters for GPUs.",,,
+navitas,Company,Navitas Semiconductor,Power semiconductor maker (GaN/SiC),US,NVTS,800V-to-6V GaN power delivery boards for Nvidia Kyber racks.,,,
+alpha_omega,Company,Alpha & Omega Semiconductor,Power semiconductor maker,US,AOSL,Co-leader in GB300 NVL72 VRM; OpenVReg controllers.,,,
+vicor,Company,Vicor,Power module maker,US,VICR,Power modules for accelerators; 800 VDC partner.,,,
+renesas,Company,Renesas Electronics,Power & MCU maker (IDM),JP,6723.T,Power management and 800 VDC ecosystem partner; major automotive MCU supplier.,,,
+country_JP,Country,,,,,,,,
+cerebras,Company,Cerebras Systems,AI accelerator designer (fabless),US,CBRS,WSE-3 wafer-scale engine on TSMC 5nm; IPO May 2026 ($66bn valuation).,,,
+huawei,Company,Huawei (HiSilicon),AI accelerator designer,CN,,"Ascend 910C / 950PR / 950DT; ~810k Ascends in 2025, 600k targeted for 2026.",,,
+cambricon,Company,Cambricon,AI accelerator designer (fabless),CN,688256.SS,Siyuan 590/690 on SMIC 7nm; ~500k chips targeted for 2026.,,,
+alibaba,Company,Alibaba (T-Head),Hyperscaler (in-house silicon),CN,BABA,Zhenwu 810E / M890 AI accelerators; ~270k chips in 2025.,,,
+baidu,Company,Baidu (Kunlunxin),Hyperscaler (in-house silicon),CN,BIDU,Kunlun P800; 1M Kunlun chips targeted by 2030.,,,
+smic,Company,SMIC,Foundry,CN,0981.HK,"China's leading foundry; 7nm/N+3 most advanced, ~30% 7nm yield; 5.4% of foundry revenue (2Q26).",,,
+kyec,Company,KYEC (King Yuan Electronics),Test services (OSAT),TW,2449.TW,"Wafer probe, final test, burn-in and SLT for AI chips; 2026 capex NT$50bn.",,,
+teradyne,Company,Teradyne,Semiconductor test equipment,US,TER,#2 in SoC test (Apple/mobile strong); AI-accelerator test growing fast.,,,
+digital_frontier,Company,Digital Frontier,Memory test equipment,KR,,HBM4 wafer testers for SK hynix (2026 orders).,,,
+country_KR,Country,,,,,,,,
+unitest,Company,UniTest,Memory test equipment,KR,086390.KQ,HBM4 wafer testers for SK hynix (2026 orders).,,,
+formfactor,Company,FormFactor,Probe cards,US,FORM,Leading probe-card maker.,,,
+technoprobe,Company,Technoprobe,Probe cards,IT,TPRO.MI,Leading probe-card maker (Italy); Teradyne owns ~10%.,,,
+mjc,Company,Micronics Japan (MJC),Probe cards,JP,6871.T,"Leading probe-card maker, strong in DRAM/HBM.",,,
+kulicke_soffa,Company,Kulicke & Soffa,Packaging equipment,US,KLIC,Die-attach / bonding equipment (CoPoS line).,,,
+canon,Company,Canon,Lithography equipment (packaging),JP,7751.T,Panel exposure tools (FPA-5525iV LF2) for CoPoS.,,,
+suss,Company,SUSS MicroTec,Packaging lithography equipment,DE,SMHN.DE,Exposure and coat/develop platforms for CoPoS.,,,
+country_DE,Country,,,,,,,,
+scientech,Company,Scientech,Packaging equipment,TW,3583.TW,Panel-level coating and heat-treatment tools.,,,
+gptc,Company,Grand Process Technology (GPTC),Packaging equipment,TW,,Wet-process and heat-treatment tools.,,,
+all_ring,Company,All Ring Tech,Packaging equipment,TW,6187.TWO,Glue filling / dispensing tools.,,,
+kokusai,Company,Kokusai Electric,Thermal processing equipment,JP,6525.T,Batch heat-treatment systems (450A).,,,
+screen,Company,SCREEN Holdings,Cleaning & coating equipment,JP,7735.T,Wafer cleaning; CoPoS coating (LM-3000).,,,
+ebara,Company,Ebara,CMP & vacuum pump equipment,JP,6361.T,CMP tools and dry vacuum pumps.,,,
+vat,Company,VAT Group,Equipment subsystem (vacuum valves),CH,VACN.SW,~75% of semiconductor vacuum valves (end-2023).,,,
+edwards,Company,Edwards (Atlas Copco),Equipment subsystem (vacuum pumps),GB,,Leading semiconductor vacuum pumps; with Pfeiffer and VAT ~55% of vacuum subsystems (2020).,,,
+country_GB,Country,,,,,,,,
+mks,Company,MKS Instruments,"Equipment subsystem (RF power, gas & process control)",US,MKSI,"RF power, mass-flow, process monitoring.",,,
+advanced_energy,Company,Advanced Energy,Equipment subsystem (RF & DC power),US,AEIS,RF/DC plasma power; also datacenter power shelves.,,,
+vdl_etg,Company,VDL ETG,Lithography subsystem supplier,NL,,Vacuum chambers and wafer-handling modules for ASML; Singapore/Vietnam expansion.,,,
+prodrive,Company,Prodrive Technologies,Lithography subsystem supplier,NL,,Electronics/mechatronics for ASML.,,,
+neways,Company,Neways,Lithography subsystem supplier,NL,,Electronics modules for ASML; new Malaysia factory (May 2025).,,,
+naura,Company,NAURA,"Deposition, etch & thermal equipment",CN,002371.SZ,Leading Chinese tool maker; >60% of furnaces at SMIC 28nm lines.,,,
+amec,Company,AMEC,Etch & deposition equipment,CN,688012.SS,Etch tools; 5nm etchers in validation on TSMC lines.,,,
+smee,Company,SMEE (Shanghai Micro Electronics),Lithography equipment,CN,,Domestic DUV; immersion prototypes only.,,,
+mitsui_chemicals,Company,Mitsui Chemicals,EUV pellicle supplier,JP,4183.T,"Primary commercial EUV pellicle producer (ASML-licensed, 2019).",,,
+lasertec,Company,Lasertec,Mask inspection equipment,JP,6920.T,Sole commercial supplier of actinic EUV mask inspection.,,,
+nuflare,Company,NuFlare Technology,Mask writer equipment,JP,,E-beam mask writers.,,,
+ims_nano,Company,IMS Nanofabrication,Mask writer equipment,AT,,Multi-beam mask writers.,,,
+country_AT,Country,,,,,,,,
+stella_chemifa,Company,Stella Chemifa,Wet chemicals (HF),JP,4109.T,Leading maker of high-purity hydrofluoric acid.,,,
+soulbrain,Company,Soulbrain,"Wet chemicals (HF, etchants)",KR,357780.KQ,Ultra-pure HF and etchants; localised Korean supply after 2019.,,,
+sk_specialty,Company,SK Specialty,Specialty gases,KR,,Top NF3 supplier.,,,
+merck_emd,Company,Merck KGaA (EMD Electronics),Precursors & specialty chemicals,DE,MRK.DE,"ALD/CVD precursors (Versum), specialty gases, resists.",,,
+entegris,Company,Entegris,"CMP slurries, filters & chemicals",US,ENTG,"CMP slurries (ex-CMC), filtration, precursors.",,,
+fujimi,Company,Fujimi Incorporated,CMP slurries,JP,5384.T,Specialist leader in CMP slurries.,,,
+jx_advanced_metals,Company,JX Advanced Metals,Sputtering targets,JP,5016.T,World leader in sputtering targets for chip metallization.,,,
+plansee,Company,Plansee,Sputtering targets (refractory metals),AT,,Tungsten/molybdenum targets; key Western tungsten processor.,,,
+materion,Company,Materion,Sputtering targets,US,MTRN,"Copper, titanium, tantalum and alloy targets.",,,
+mgc,Company,Mitsubishi Gas Chemical,"Substrate core materials (BT, CCL, prepreg)",JP,4182.T,Largest BT substrate raw-material supplier; delays in 2025 due to CoWoS demand.,,,
+wistron,Company,,,,,Nvidia superchip/rack ODM (~21% of GB200/GB300 racks in 2025); Fort Worth D1 ~5% of Nvidia output (July 2026). Parent of Wiwynn.,,,
+google,Company,,,,,,,,
+amazon,Company,,,,,,,,
+meta,Company,,,,,,,,
+openai,Company,,,,,,,,
+foxconn,Company,,,,,Assembles Nvidia GB200/GB300 servers and racks (~52% of GB200/GB300 racks in 2025; targets 55-60% of AI servers in 2026); Guadalajara GB200 plant; US sites in Wisconsin and Texas.,https://eu.36kr.com/en/p/3590983777108229,,
+ct_ai_asic,ChipType,,,,,,,,
+cxmt,Company,,,,,,,,
+ct_hbm,ChipType,,,,,,,,
+nan_ya_pcb,Company,,,,,,,,
+shinko,Company,,,,,,,,
+disco,Company,,,,,,,,
+towa,Company,,,,,,,,
+asmpt,Company,,,,,,,,
+rm_tungsten,RawMaterial,Tungsten,Critical mineral,,,"Contacts/vias (WF6), W sputtering targets.",,,"{""note"": ""Link price_series to a TimescaleDB series id""}"
+rm_cobalt,RawMaterial,Cobalt,Critical mineral,,,Contacts and liners; Co targets.,,,"{""note"": ""Link price_series to a TimescaleDB series id""}"
+rm_tantalum,RawMaterial,Tantalum,Critical mineral,,,Ta/TaN barrier layers; Ta targets. Conflict-mineral regulated.,,,"{""note"": ""Link price_series to a TimescaleDB series id""}"
+rm_fluorspar,RawMaterial,Fluorspar,Industrial mineral,,,Feedstock for hydrogen fluoride and fluorinated etch/clean gases.,,,"{""note"": ""Link price_series to a TimescaleDB series id""}"
+rm_rare_earths,RawMaterial,Rare earths,Critical mineral,,,"Ceria for CMP slurries, NdFeB magnets in tools, scandium/yttrium in coatings.",,,"{""note"": ""Link price_series to a TimescaleDB series id""}"
+rm_indium,RawMaterial,Indium,Critical mineral,,,Indium phosphide lasers and photodetectors for optical transceivers.,,,"{""note"": ""Link price_series to a TimescaleDB series id""}"
+rm_tin,RawMaterial,,,,,,,,
+rm_gallium,RawMaterial,,,,,,,,
+rm_germanium,RawMaterial,,,,,,,,
+lumentum,Company,,,,,,,,
+coherent,Company,,,,,,,,
+site_kyec_miaoli,Site,KYEC Miaoli test campus (Zhunan / Toufen / Tongluo),test services,TW,,"Wafer probe, final test, burn-in and SLT for AI chips",https://t.media/3177612,,"{""site_type"": ""test services"", ""status"": ""operating; record 2026 capex"", ""products"": ""Wafer probe, final test, burn-in and SLT for AI chips"", ""confidence"": ""medium"", ""lat"": 24.688, ""lon"": 120.912, ""city"": ""Toufen / Zhunan, Miaoli"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_kyec_singapore,Site,KYEC Singapore (first overseas base),test services,SG,,Chip test,https://t.media/3177612,,"{""site_type"": ""test services"", ""status"": ""under construction"", ""products"": ""Chip test"", ""confidence"": ""medium"", ""lat"": 1.352, ""lon"": 103.82, ""city"": ""Singapore"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+country_SG,Country,,,,,,,,
+site_lasertec_yokohama,Site,Lasertec Yokohama,equipment manufacturing,JP,,Actinic EUV mask inspection,https://en.wikipedia.org/wiki/Lasertec_Corporation,,"{""site_type"": ""equipment manufacturing"", ""status"": ""operating"", ""products"": ""Actinic EUV mask inspection"", ""confidence"": ""medium"", ""lat"": 35.508, ""lon"": 139.617, ""city"": ""Yokohama, Kanagawa"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_vat_haag,Site,VAT Haag,equipment subsystem,CH,,Vacuum valves (HQ and production),https://en.wikipedia.org/wiki/VAT_Group,,"{""site_type"": ""equipment subsystem"", ""status"": ""operating"", ""products"": ""Vacuum valves (HQ and production)"", ""confidence"": ""high"", ""lat"": 47.211, ""lon"": 9.485, ""city"": ""Haag (Sennwald)"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_vat_penang,Site,VAT Penang,equipment subsystem,MY,,Vacuum valves,https://en.wikipedia.org/wiki/VAT_Group,,"{""site_type"": ""equipment subsystem"", ""status"": ""operating"", ""products"": ""Vacuum valves"", ""confidence"": ""high"", ""lat"": 5.285, ""lon"": 100.3, ""city"": ""Penang"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+country_MY,Country,,,,,,,,
+site_innolight_thailand,Site,InnoLight Thailand,optical module assembly,TH,,800G/1.6T modules for North America,https://photoncap.net/p/chinese-optical-modules-own-7-of,,"{""site_type"": ""optical module assembly"", ""status"": ""operating"", ""products"": ""800G/1.6T modules for North America"", ""confidence"": ""medium"", ""lat"": 13.4, ""lon"": 101.0, ""city"": ""Thailand (location approximate)"", ""geo_precision"": ""region"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_nittobo_fukushima,Site,Nittobo Fukushima,materials plant,JP,,Glass fibre / T-glass cloth,,,"{""site_type"": ""materials plant"", ""status"": ""operating"", ""products"": ""Glass fibre / T-glass cloth"", ""confidence"": ""low"", ""lat"": 37.76, ""lon"": 140.47, ""city"": ""Fukushima"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_smic_shanghai,Site,SMIC Shanghai,front-end fab,CN,,7nm/N+ and mature logic,,Fab,"{""site_type"": ""front-end fab"", ""status"": ""operating"", ""products"": ""7nm/N+ and mature logic"", ""confidence"": ""low"", ""lat"": 31.205, ""lon"": 121.62, ""city"": ""Shanghai (Zhangjiang)"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_cxmt_hefei,Site,CXMT Hefei,front-end fab,CN,,"DRAM, early HBM3",,Fab,"{""site_type"": ""front-end fab"", ""status"": ""operating"", ""products"": ""DRAM, early HBM3"", ""confidence"": ""low"", ""lat"": 31.78, ""lon"": 117.2, ""city"": ""Hefei, Anhui"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_naura_beijing,Site,NAURA Beijing,equipment manufacturing,CN,,"Furnaces, etch, deposition",,,"{""site_type"": ""equipment manufacturing"", ""status"": ""operating"", ""products"": ""Furnaces, etch, deposition"", ""confidence"": ""low"", ""lat"": 39.79, ""lon"": 116.51, ""city"": ""Beijing"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_amec_shanghai,Site,AMEC Shanghai,equipment manufacturing,CN,,Etch and deposition tools,,,"{""site_type"": ""equipment manufacturing"", ""status"": ""operating"", ""products"": ""Etch and deposition tools"", ""confidence"": ""low"", ""lat"": 31.2, ""lon"": 121.6, ""city"": ""Shanghai"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_quanta_tennessee,Site,Quanta Tennessee,server / rack assembly,US,,AI server racks,https://www.maktinta.com/post/ai-server-rack-builders-and-hiring-2026,,"{""site_type"": ""server / rack assembly"", ""status"": ""expanding"", ""products"": ""AI server racks"", ""confidence"": ""medium"", ""lat"": 36.16, ""lon"": -86.78, ""city"": ""Nashville area, Tennessee"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_wiwynn_el_paso,Site,Wiwynn El Paso County,server / rack assembly,US,,AI server racks ($150M facility),https://www.maktinta.com/post/ai-server-rack-builders-and-hiring-2026,,"{""site_type"": ""server / rack assembly"", ""status"": ""announced 2025"", ""products"": ""AI server racks ($150M facility)"", ""confidence"": ""medium"", ""lat"": 31.76, ""lon"": -106.49, ""city"": ""El Paso County, Texas"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_wiwynn_juarez,Site,Wiwynn Ciudad Juárez,server / rack assembly,MX,,Server racks,https://www.maktinta.com/post/ai-server-rack-builders-and-hiring-2026,,"{""site_type"": ""server / rack assembly"", ""status"": ""operating"", ""products"": ""Server racks"", ""confidence"": ""medium"", ""lat"": 31.69, ""lon"": -106.42, ""city"": ""Ciudad Juárez, Chihuahua"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+country_MX,Country,,,,,,,,
+site_supermicro_san_jose,Site,Supermicro San Jose,server / rack assembly,US,,Liquid-cooled AI racks,https://www.maktinta.com/post/ai-server-rack-builders-and-hiring-2026,,"{""site_type"": ""server / rack assembly"", ""status"": ""operating"", ""products"": ""Liquid-cooled AI racks"", ""confidence"": ""medium"", ""lat"": 37.34, ""lon"": -121.89, ""city"": ""San Jose, California"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_foxconn_wisconsin,Site,Foxconn Wisconsin,server / rack assembly,US,,AI servers,https://www.maktinta.com/post/ai-server-rack-builders-and-hiring-2026,,"{""site_type"": ""server / rack assembly"", ""status"": ""operating"", ""products"": ""AI servers"", ""confidence"": ""medium"", ""lat"": 42.71, ""lon"": -87.9, ""city"": ""Mount Pleasant, Wisconsin"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_dc_stargate_abilene,Site,Stargate Abilene,AI datacenter,US,,~1.2 GW; onsite gas + grid,https://www.nextbigfuture.com/2026/06/major-ai-data-center-build-projects-timelines-status-2026-2028.html,,"{""site_type"": ""AI datacenter"", ""status"": ""phased; full by Q4 2026"", ""products"": ""~1.2 GW; onsite gas + grid"", ""confidence"": ""medium"", ""lat"": 32.45, ""lon"": -99.73, ""city"": ""Abilene, Texas"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_dc_xai_colossus2,Site,xAI Colossus 2,AI datacenter,US,,GW-scale,https://www.nextbigfuture.com/2026/06/major-ai-data-center-build-projects-timelines-status-2026-2028.html,,"{""site_type"": ""AI datacenter"", ""status"": ""ramping"", ""products"": ""GW-scale"", ""confidence"": ""medium"", ""lat"": 35.05, ""lon"": -90.03, ""city"": ""Memphis area (TN/MS)"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_dc_rainier,Site,Project Rainier (Anthropic–Amazon),AI datacenter,US,,~1+ GW IT power; Trainium,https://www.nextbigfuture.com/2026/06/major-ai-data-center-build-projects-timelines-status-2026-2028.html,,"{""site_type"": ""AI datacenter"", ""status"": ""operating / expanding"", ""products"": ""~1+ GW IT power; Trainium"", ""confidence"": ""medium"", ""lat"": 41.7, ""lon"": -86.51, ""city"": ""New Carlisle, Indiana"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_dc_meta_prometheus,Site,Meta Prometheus,AI datacenter,US,,Hundreds of MW to GW-scale,https://www.nextbigfuture.com/2026/06/major-ai-data-center-build-projects-timelines-status-2026-2028.html,,"{""site_type"": ""AI datacenter"", ""status"": ""online ~May 2026"", ""products"": ""Hundreds of MW to GW-scale"", ""confidence"": ""medium"", ""lat"": 40.08, ""lon"": -82.81, ""city"": ""New Albany, Ohio"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+site_dc_ms_fairwater_atl,Site,Microsoft Fairwater Atlanta,AI datacenter,US,,Large AI campus,https://www.nextbigfuture.com/2026/06/major-ai-data-center-build-projects-timelines-status-2026-2028.html,,"{""site_type"": ""AI datacenter"", ""status"": ""ramping 2026"", ""products"": ""Large AI campus"", ""confidence"": ""medium"", ""lat"": 33.75, ""lon"": -84.39, ""city"": ""Atlanta, Georgia"", ""geo_precision"": ""city"", ""geo_note"": ""Approximate (city / industrial-park level), not verified per building.""}"
+lane_ap6_kyec,Lane,Test services: site_tsmc_ap6_zhunan → site_kyec_miaoli (road),Test services,,,"Both sites in Zhunan/Toufen, Miaoli.",https://t.media/3177612,,"{""item"": ""Packaged AI GPUs (CoWoS) for final test, burn-in and system-level test"", ""item_category"": ""Test services"", ""mode"": ""road"", ""mode_basis"": ""typical practice (inferred)"", ""typical_transit"": ""same day"", ""confidence"": ""medium"", ""from_company"": ""tsmc"", ""to_company"": ""kyec"", ""for_chiptypes"": ""ct_ai_gpu"", ""distance_km"": 3, ""geometry"": ""[{\""seq\"": 1, \""mode\"": \""road\"", \""coords\"": [[120.878, 24.682], [120.912, 24.688]]}]""}"
+site_tsmc_ap6_zhunan,Site,,,,,,,,
+lane_foxconn_gdl_stargate,Lane,AI servers / racks: site_foxconn_guadalajara → site_dc_stargate_abilene (road),AI servers / racks,,,Source says Mexico-built GB200 servers mainly serve Stargate; which campus is not stated.,https://mexicobusiness.news/cloudanddata/news/foxconn-builds-nvidia-ai-servers-mexico-stargate-project,,"{""item"": ""GB200 NVL72 racks for Stargate (Oracle-run, for OpenAI)"", ""item_category"": ""AI servers / racks"", ""mode"": ""road"", ""mode_basis"": ""flow reported; destination campus inferred"", ""typical_transit"": ""2-4 days"", ""confidence"": ""low"", ""from_company"": ""foxconn"", ""to_company"": ""oracle"", ""for_chiptypes"": ""ct_ai_gpu"", ""distance_km"": 1358, ""geometry"": ""[{\""seq\"": 1, \""mode\"": \""road\"", \""coords\"": [[-103.35, 20.67], [-99.73, 32.45]]}]""}"
+site_foxconn_guadalajara,Site,,,,,,,,
+lane_nittobo_unimicron,Lane,Glass cloth: site_nittobo_fukushima → site_unimicron_yangmei (air),Glass cloth,,,Often routed via core-laminate makers.,,,"{""item"": ""Low-CTE glass cloth (T-glass)"", ""item_category"": ""Glass cloth"", ""mode"": ""air"", ""mode_basis"": ""typical practice (inferred)"", ""typical_transit"": ""2-4 days"", ""confidence"": ""low"", ""from_company"": ""nittobo"", ""to_company"": ""unimicron"", ""distance_km"": 2424, ""geometry"": ""[{\""seq\"": 1, \""mode\"": \""road\"", \""coords\"": [[140.47, 37.76], [140.393, 35.772]]}, {\""seq\"": 2, \""mode\"": \""air\"", \""coords\"": [[140.393, 35.772], [140.0591, 35.6289], [139.7264, 35.4849], [139.3948, 35.34], [139.0645, 35.1942], [138.7353, 35.0476], [138.4074, 34.9], [138.0806, 34.7515], [137.755, 34.6022], [137.4305, 34.452], [137.1073, 34.301], [136.7852, 34.1491], [136.4642, 33.9964], [136.1444, 33.8428], [135.8258, 33.6884], [135.5083, 33.5332], [135.1919, 33.3772], [134.8767, 33.2204], [134.5626, 33.0628], [134.2497, 32.9044], [133.9378, 32.7453], [133.6271, 32.5854], [133.3175, 32.4247], [133.009, 32.2632], [132.7015, 32.1011], [132.3952, 31.9381], [132.09, 31.7745], [131.7858, 31.6101], [131.4827, 31.445], [131.1807, 31.2792], [130.8798, 31.1126], [130.5799, 30.9454], [130.281, 30.7775], [129.9832, 30.6089], [129.6865, 30.4397], [129.3907, 30.2697], [129.096, 30.0991], [128.8023, 29.9279], [128.5096, 29.756], [128.218, 29.5835], [127.9273, 29.4103], [127.6376, 29.2365], [127.3489, 29.062], [127.0611, 28.887], [126.7744, 28.7114], [126.4886, 28.5351], [126.2038, 28.3582], [125.9199, 28.1808], [125.6369, 28.0028], [125.3549, 27.8242], [125.0738, 27.645], [124.7936, 27.4653], [124.5144, 27.285], [124.236, 27.1041], [123.9586, 26.9227], [123.682, 26.7408], [123.4064, 26.5583], [123.1316, 26.3753], [122.8577, 26.1918], [122.5846, 26.0078], [122.3124, 25.8232], [122.041, 25.6381], [121.7705, 25.4526], [121.5009, 25.2665], [121.232, 25.08]]}, {\""seq\"": 3, \""mode\"": \""road\"", \""coords\"": [[121.232, 25.08], [121.14, 24.91]]}]""}"
+site_unimicron_yangmei,Site,,,,,,,,
+hub_nrt,Hub,,,,,,,,
+hub_tpe,Hub,,,,,,,,
+ev_2011_tohoku,DisruptionEvent,Tōhoku earthquake & tsunami — ~25% of global wafer output suspended,Disruption event,,,Shin-Etsu's Shirakawa plant among sites offline; Renesas Naka also hit.,https://www.forbes.com/sites/ericsavitz/2011/03/21/japan-quake-knocked-out-25-of-global-silicon-wafer-production/,,"{""date"": ""2011-03-11"", ""status"": ""resolved"", ""severity"": ""high"", ""end_date"": ""2011-06""}"
+shin_etsu,Company,,,,,,,,
+site_seh_shirakawa,Site,,,,,,,,
+ev_2019_jp_kr_controls,DisruptionEvent,"Japan export controls on HF, photoresist and fluorinated polyimide to South Korea",Disruption event,,,Japan supplied >90% of Korea's photoresist and ~45% of its HF; triggered Korean localisation (e.g. Soulbrain). Lifted 2023.,https://www.usitc.gov/publications/332/working_papers/the_south_korea-japan_trade_dispute_in_context_semiconductor_manufacturing_chemicals_and_concentrated_supply_chains.pdf,,"{""date"": ""2019-07-01"", ""status"": ""resolved"", ""severity"": ""high"", ""end_date"": ""2023-03""}"
+jsr,Company,,,,,,,,
+tok,Company,,,,,,,,
+ev_2021_texas_freeze,DisruptionEvent,"Texas winter storm shuts Austin fabs (Samsung, NXP, Infineon)",Disruption event,,,Power and water outages forced shutdowns for weeks.,https://www.datacenterdynamics.com/en/news/samsung-nxp-and-infineon-chip-fabs-shut-down-texas-amid-record-storm/,,"{""date"": ""2021-02-16"", ""status"": ""resolved"", ""severity"": ""high"", ""end_date"": ""2021-04""}"
+ev_2021_renesas_fire,DisruptionEvent,Renesas Naka fab fire,Disruption event,,,300mm line fire deepened the 2021 automotive chip shortage.,https://www.datacenterdynamics.com/en/news/renesas-semiconductor-fab-catches-fire-impacting-chip-production/,,"{""date"": ""2021-03-19"", ""status"": ""resolved"", ""severity"": ""high"", ""end_date"": ""2021-06""}"
+ev_2022_neon_ukraine,DisruptionEvent,"Ukraine neon producers (Ingas, Cryoin) halt after Russian invasion",Disruption event,,,Ukraine had supplied ~half of world neon; chipmakers had diversified after 2014.,https://www.usitc.gov/publications/332/executive_briefings/ebot_decarlo_goodman_ukraine_neon_and_semiconductors.pdf,,"{""date"": ""2022-03-11"", ""status"": ""resolved"", ""severity"": ""high"", ""end_date"": ""2023""}"
+ev_2023_china_ga_ge,DisruptionEvent,China licensing regime for gallium and germanium exports,Disruption event,,,"Exports collapsed after licensing began; US-specific ban added Dec 2024, suspended to 27 Nov 2026.",https://www.usitc.gov/publications/332/executive_briefings/ebot_germanium_and_gallium.pdf,,"{""date"": ""2023-08-01"", ""status"": ""ongoing"", ""severity"": ""high""}"
+ev_2024_hualien_quake,DisruptionEvent,"Hualien earthquake — TSMC evacuations, up to 30k+ wafers scrapped",Disruption event,,,Tools recovered within days; wafer-loss estimates vary (30k-60k).,https://www.astutegroup.com/news/industrial/tsmc-earthquake-up-to-30000-wafers-may-be-scrapped/,,"{""date"": ""2024-04-03"", ""status"": ""resolved"", ""severity"": ""medium"", ""end_date"": ""2024-04""}"
+ev_2024_helene_spruce_pine,DisruptionEvent,Hurricane Helene halts Spruce Pine high-purity quartz mines,Disruption event,,,Both operators stopped simultaneously; single point of failure for crucible quartz.,https://en.wikipedia.org/wiki/High-purity_quartz,,"{""date"": ""2024-09-27"", ""status"": ""resolved"", ""severity"": ""high"", ""end_date"": ""2024-10""}"
+site_spruce_pine,Site,,,,,,,,
+rm_hpq,RawMaterial,,,,,,,,
+sibelco,Company,,,,,,,,
+quartz_corp,Company,,,,,,,,
+ev_2024_us_hbm_ban,DisruptionEvent,US export ban on HBM to China,Disruption event,,,China stockpiled ~13M HBM stacks before the ban; stockpile estimated depleted by late 2025.,https://www.the-substrate.net/p/where-chinas-ai-chip-supply-chain,,"{""date"": ""2024-12-02"", ""status"": ""ongoing"", ""severity"": ""high""}"
+ev_2025_china_rare_earths,DisruptionEvent,China rare-earth export controls (7 heavy REEs licensed; Oct 2025 expansion suspended to 10 Nov 2026),Disruption event,,,No general licences announced for the April 2025 elements; tungsten and indium also controlled.,https://www.pillsburylaw.com/en/news-and-insights/china-suspends-export-controls-certain-critical-minerals-related-items.html,,"{""date"": ""2025-04-04"", ""status"": ""ongoing"", ""severity"": ""high""}"
+ev_2025_2026_tglass,DisruptionEvent,Low-CTE glass cloth (T-glass) and BT material shortage,Disruption event,,,Nittobo is the key T-glass maker; relief not expected until 2027. Nan Ya Plastics adding capacity.,https://www.tomshardware.com/tech-industry/artificial-intelligence/glass-cloth-could-be-the-next-great-ai-shortage-as-major-manufacturers-scramble-to-secure-critical-material-japanese-manufacturer-courted-by-apple-nvidia-google-and-amazon,,"{""date"": ""2025-05"", ""status"": ""ongoing"", ""severity"": ""high""}"
+ev_2026_sec232_chip_tariff,DisruptionEvent,US Section 232 tariff (25%) on advanced computing chips,Disruption event,,,"Exemptions include chips for US datacenters, R&D, startups and public sector; further phase may follow.",https://www.whitehouse.gov/presidential-actions/2026/01/adjusting-imports-of-semiconductors-semiconductor-manufacturing-equipment-and-their-derivative-products-into-the-united-states/,,"{""date"": ""2026-01-15"", ""status"": ""ongoing"", ""severity"": ""medium""}"
+ev_2026_dram_shortage,DisruptionEvent,Conventional DRAM and NAND shortage / price surge,Disruption event,,,2Q26 DRAM revenue +59.5% QoQ as supply lags AI-server demand; capacity shifted to HBM.,https://www.trendforce.com/presscenter/news/20260907-13219.html,,"{""date"": ""2026-01"", ""status"": ""ongoing"", ""severity"": ""high""}"
+ct_server_dram,ChipType,,,,,,,,
+ct_enterprise_ssd,ChipType,,,,,,,,
+ev_2026_fcc_optics,DisruptionEvent,Proposed FCC ban on new Chinese optical transceivers,Disruption event,,,Chinese makers ≈60% of datacom optical revenue; >60% of InnoLight sales go to US hyperscalers.,https://cignal.ai/2026/08/fcc-ban-on-new-chinese-optical-modules/,,"{""date"": ""2026-08"", ""status"": ""proposed"", ""severity"": ""high""}"
+ct_optical_transceiver,ChipType,,,,,,,,
