@@ -1,0 +1,145 @@
+id,label,name,category,country,ticker,description,source_url,props
+country_TW,Country,Taiwan,Country,TW,,,,
+country_KR,Country,South Korea,Country,KR,,,,
+country_JP,Country,Japan,Country,JP,,,,
+country_US,Country,United States,Country,US,,,,
+country_NL,Country,Netherlands,Country,NL,,,,
+country_DE,Country,Germany,Country,DE,,,,
+country_CN,Country,China,Country,CN,,,,
+country_FR,Country,France,Country,FR,,,,
+country_AT,Country,Austria,Country,AT,,,,
+country_SG,Country,Singapore,Country,SG,,,,
+country_GB,Country,United Kingdom,Country,GB,,,,
+country_QA,Country,Qatar,Country,QA,,,,
+country_UA,Country,Ukraine,Country,UA,,,,
+country_RU,Country,Russia,Country,RU,,,,
+country_DZ,Country,Algeria,Country,DZ,,,,
+country_BE,Country,Belgium,Country,BE,,,,
+country_NO,Country,Norway,Country,NO,,,,
+country_IE,Country,Ireland,Country,IE,,,,
+vertical_datacenter_ai,EndMarketVertical,Datacenter / AI,End market,,,"Hyperscale, colocation and AI-factory datacenters. Populated in run 1.",,"{""populated"": true}"
+vertical_automotive,EndMarketVertical,Automotive,End market,,,Defined for the full taxonomy; not yet populated (future run).,,"{""populated"": false}"
+vertical_mobile,EndMarketVertical,Smartphones / Mobile,End market,,,Defined for the full taxonomy; not yet populated (future run).,,"{""populated"": false}"
+vertical_pc,EndMarketVertical,PC / Laptop,End market,,,Defined for the full taxonomy; not yet populated (future run).,,"{""populated"": false}"
+vertical_industrial_iot,EndMarketVertical,Industrial / IoT,End market,,,Defined for the full taxonomy; not yet populated (future run).,,"{""populated"": false}"
+vertical_aerospace_defense,EndMarketVertical,Aerospace / Defense,End market,,,Defined for the full taxonomy; not yet populated (future run).,,"{""populated"": false}"
+vertical_consumer_electronics,EndMarketVertical,Consumer Electronics,End market,,,Defined for the full taxonomy; not yet populated (future run).,,"{""populated"": false}"
+ct_ai_gpu,ChipType,AI GPU (merchant accelerator),Logic / AI accelerator,,,"Merchant AI accelerators, e.g. Nvidia Blackwell/Rubin, AMD Instinct MI350/MI450.",,
+ct_ai_asic,ChipType,"Custom AI ASIC (TPU, Trainium, Maia, MTIA)",Logic / AI accelerator,,,Hyperscaler-owned accelerators co-designed with ASIC partners.,,
+ct_server_cpu,ChipType,Server CPU,Logic / CPU,,,"x86 (AMD EPYC, Intel Xeon) and Arm (Nvidia Vera, Graviton, Axion, Cobalt).",,
+ct_hbm,ChipType,HBM (High Bandwidth Memory),Memory / DRAM,,,3D-stacked DRAM co-packaged with accelerators; HBM3E and HBM4 in 2026.,,
+ct_server_dram,ChipType,Server DRAM (DDR5 RDIMM / LPDDR5X),Memory / DRAM,,,Conventional DRAM for CPU memory.,,
+ct_enterprise_ssd,ChipType,Enterprise SSD / NAND flash,Memory / NAND,,,High-capacity TLC/QLC SSDs for AI storage tiers.,,
+ct_switch_asic,ChipType,Network switch ASIC,Networking silicon,,,Ethernet/InfiniBand/NVLink switch silicon for scale-up and scale-out fabrics.,,
+ct_nic_dpu,ChipType,NIC / DPU / SuperNIC,Networking silicon,,,Server network adapters and data-processing units.,,
+ct_optical_transceiver,ChipType,Optical transceiver (800G / 1.6T),Optoelectronics,,,Pluggable and co-packaged optics linking racks.,,
+ct_retimer,ChipType,"PCIe/CXL retimers, switches & AECs",Connectivity silicon,,,Signal-integrity and fan-out silicon inside AI servers.,,
+ct_power_semi,ChipType,Power semiconductors (VRM / PMIC / GaN),Analog / Power,,,Voltage regulation and power conversion; shared with the Automotive vertical.,,
+nvidia,Company,Nvidia,AI accelerator designer (fabless),US,NVDA,Blackwell (TSMC 4NP) and Rubin (TSMC N3) GPUs; Vera CPU; Spectrum-X/NVLink networking.,,
+amd,Company,AMD,AI accelerator & CPU designer (fabless),US,AMD,"Instinct MI350/MI450 GPUs, EPYC Venice CPUs, Helios rack.",,
+intel,Company,Intel,IDM (CPU designer + foundry),US,INTC,Xeon 6/6+ server CPUs on Intel 3 / Intel 18A.,,
+google,Company,Google (Alphabet),Hyperscaler (in-house silicon),US,GOOGL,"TPU v7 Ironwood / TPU 8, Axion Arm CPU.",,
+amazon,Company,Amazon (AWS / Annapurna Labs),Hyperscaler (in-house silicon),US,AMZN,"Trainium 2/3 accelerators, Graviton Arm CPUs.",,
+microsoft,Company,Microsoft,Hyperscaler (in-house silicon),US,MSFT,"Maia 200 inference accelerator (TSMC 3nm), Cobalt Arm CPU.",,
+meta,Company,Meta,Hyperscaler (in-house silicon),US,META,MTIA accelerator family (MTIA 300-500 roadmap through 2027).,,
+openai,Company,OpenAI,AI lab (in-house silicon),US,,Custom accelerator program with Broadcom; 10 GW target by 2029.,,
+broadcom,Company,Broadcom,Custom ASIC design partner & networking silicon,US,AVGO,"Co-designs TPU, MTIA, OpenAI chips; Tomahawk switches; optical DSPs.",,
+marvell,Company,Marvell Technology,Custom ASIC design partner & networking silicon,US,MRVL,"Custom silicon for AWS, Microsoft, Google; optical DSPs; Teralynx switches.",,
+mediatek,Company,MediaTek,Custom ASIC design partner,TW,2454.TW,Second TPU design partner for Google.,,
+alchip,Company,Alchip Technologies,Custom ASIC design partner,TW,3661.TW,Turnkey ASIC design/tape-out; Trainium 3 partner.,,
+guc,Company,Global Unichip (GUC),Custom ASIC design partner,TW,3443.TW,TSMC-affiliated ASIC design service; Maia 200 partner.,,
+tsmc,Company,TSMC,Foundry & advanced packaging,TW,TSM,72.5% foundry revenue share (2Q26); CoWoS; HBM4 base dies.,,
+samsung_foundry,Company,Samsung Foundry,Foundry,KR,005930.KS,Samsung Electronics' foundry business (2Q26 share 5.9%); SF4 HBM4 base dies.,,
+sk_hynix,Company,SK hynix,Memory manufacturer (IDM),KR,000660.KS,HBM leader; DRAM; NAND via SK hynix + Solidigm.,,
+samsung_memory,Company,Samsung Electronics (Memory),Memory manufacturer (IDM),KR,005930.KS,No.1 DRAM by revenue (2Q26 39.4%); HBM4 with in-house 4nm base die.,,
+micron,Company,Micron Technology,Memory manufacturer (IDM),US,MU,"DRAM, HBM, NAND/enterprise SSD.",,
+cxmt,Company,CXMT (ChangXin Memory),Memory manufacturer (IDM),CN,,Chinese DRAM maker; 9.5% DRAM share in 2Q26.,,
+solidigm,Company,Solidigm,Enterprise SSD / NAND maker,US,,SK hynix subsidiary; high-capacity QLC enterprise SSDs.,,
+kioxia,Company,Kioxia,Enterprise SSD / NAND maker,JP,285A.T,NAND flash (BiCS8); JV fabs with SanDisk.,,
+sandisk,Company,SanDisk,Enterprise SSD / NAND maker,US,SNDK,NAND flash; JV fabs with Kioxia.,,
+ase,Company,ASE Technology (incl. SPIL),OSAT / advanced packaging,TW,ASX,World's largest OSAT; CoWoS-type outsourcing from TSMC.,,
+amkor,Company,Amkor Technology,OSAT / advanced packaging,US,AMKR,OSAT; largest share of TSMC's outsourced CoWoS work; Arizona packaging plant.,,
+ibiden,Company,Ibiden,IC substrate maker,JP,4062.T,High-end ABF substrates; co-primary AI GPU substrate supplier.,,
+unimicron,Company,Unimicron,IC substrate maker,TW,3037.TW,Largest ABF substrate maker (~22%); >70% of ASIC substrates.,,
+shinko,Company,Shinko Electric Industries,IC substrate maker,JP,,ABF substrates (taken private 2025).,,
+ats,Company,AT&S,IC substrate maker,AT,ATS.VI,ABF substrates; Austrian.,,
+nan_ya_pcb,Company,Nan Ya PCB,IC substrate maker,TW,8046.TW,ABF substrates; vertically integrated (Formosa group).,,
+kinsus,Company,Kinsus Interconnect,IC substrate maker,TW,3189.TW,ABF substrates; aggressive 2026 capacity expansion.,,
+semco,Company,Samsung Electro-Mechanics,IC substrate maker,KR,009150.KS,ABF/FC-BGA substrates.,,
+ajinomoto,Company,Ajinomoto (Fine-Techno),Substrate material supplier,JP,2802.T,~95% of ABF build-up film; 30% price hike in 2026.,,
+nittobo,Company,Nitto Boseki (Nittobo),Substrate material supplier,JP,3110.T,Low-CTE glass cloth for substrate cores.,,
+hanmi,Company,Hanmi Semiconductor,HBM bonding equipment,KR,042700.KQ,TC bonders for HBM (incl. HBM4 'Griffin').,,
+asmpt,Company,ASMPT,HBM bonding equipment,SG,0522.HK,TC bonders; ~half of SK hynix HBM4 bonders (late 2025).,,
+hanwha_semitech,Company,Hanwha Semitech,HBM bonding equipment,KR,,TC and hybrid bonders.,,
+besi,Company,BE Semiconductor (Besi),HBM bonding equipment,NL,BESI.AS,TC and hybrid bonders; hybrid-bonding leader.,,
+disco,Company,Disco,Wafer thinning & dicing equipment,JP,6146.T,70-80% share in HBM wafer grinders.,,
+towa,Company,Towa,HBM bonding equipment,JP,6315.T,Molding equipment for HBM.,,
+namics,Company,Namics,HBM packaging material supplier,JP,,Exclusive EMC supplier for SK hynix MR-MUF.,,
+resonac,Company,Resonac,HBM packaging material supplier,JP,4004.T,NCF films and thermal interface materials.,,
+advantest,Company,Advantest,Semiconductor test equipment,JP,6857.T,SoC and memory testers.,,
+asml,Company,ASML,Lithography equipment,NL,ASML,Sole EUV scanner supplier; 21.2% of 2025 WFE market.,,
+applied_materials,Company,Applied Materials,Deposition & etch equipment,US,AMAT,Broadest front-end tool portfolio.,,
+lam_research,Company,Lam Research,Deposition & etch equipment,US,LRCX,Etch and deposition leader.,,
+tokyo_electron,Company,Tokyo Electron (TEL),Deposition & etch equipment,JP,8035.T,"Coater/developers, etch, deposition.",,
+kla,Company,KLA,Process control / metrology equipment,US,KLAC,Inspection and metrology leader.,,
+zeiss_smt,Company,Carl Zeiss SMT,Lithography subsystem supplier,DE,,"Single supplier of ASML optics (lenses, mirrors, illuminators, collectors).",,
+trumpf,Company,TRUMPF,Lithography subsystem supplier,DE,,CO2 drive laser for EUV light source.,,
+cymer,Company,Cymer (ASML),Lithography subsystem supplier,US,,EUV/DUV light sources; ASML subsidiary since 2013.,,
+shin_etsu,Company,Shin-Etsu Chemical,Silicon wafer & photoresist supplier,JP,4063.T,No.1 300mm wafers (~29%); EUV photoresist.,,
+sumco,Company,SUMCO,Silicon wafer supplier,JP,3436.T,No.2 300mm wafers (~24%).,,
+globalwafers,Company,GlobalWafers,Silicon wafer supplier,TW,6488.TWO,"300mm wafers; Sherman, Texas plant opened 2025.",,
+siltronic,Company,Siltronic,Silicon wafer supplier,DE,WAF.DE,300mm wafers.,,
+sk_siltron,Company,SK Siltron,Silicon wafer supplier,KR,,300mm wafers; SK Group sister of SK hynix.,,
+tok,Company,Tokyo Ohka Kogyo (TOK),Photoresist supplier,JP,4186.T,EUV photoresist leader.,,
+jsr,Company,JSR,Photoresist supplier,JP,,EUV resists incl. Inpria metal-oxide resists (private since 2024).,,
+fujifilm,Company,Fujifilm Electronic Materials,Photoresist supplier,JP,4901.T,Photoresists and process chemicals.,,
+hoya,Company,Hoya,Photomask blank supplier,JP,7741.T,EUV mask blanks.,,
+agc,Company,AGC,Photomask blank supplier,JP,5201.T,EUV mask blanks.,,
+linde,Company,Linde,Industrial & specialty gas supplier,IE,LIN,Bulk and specialty gases; US-sourced helium.,,
+air_liquide,Company,Air Liquide,Industrial & specialty gas supplier,FR,AI.PA,Gases incl. helium; heavily Qatar-exposed for helium.,,
+air_products,Company,Air Products,Industrial & specialty gas supplier,US,APD,Gases incl. helium from US storage.,,
+wacker,Company,Wacker Chemie,Polysilicon producer,DE,WCH.DE,Electronic-grade polysilicon (Burghausen).,,
+hemlock,Company,Hemlock Semiconductor,Polysilicon producer,US,,Electronic-grade polysilicon (Michigan).,,
+tokuyama,Company,Tokuyama,Polysilicon producer,JP,4043.T,Electronic-grade polysilicon.,,
+sibelco,Company,Sibelco (Covia),High-purity quartz miner,BE,,"Spruce Pine, NC high-purity quartz (IOTA).",,
+quartz_corp,Company,The Quartz Corp,High-purity quartz miner,NO,,"Spruce Pine, NC high-purity quartz.",,
+synopsys,Company,Synopsys,EDA software & IP,US,SNPS,Chip design software and interface IP.,,
+cadence,Company,Cadence Design Systems,EDA software & IP,US,CDNS,Chip design software and IP.,,
+arm,Company,Arm Holdings,CPU IP licensor,GB,ARM,Arm ISA/Neoverse IP; own AGI CPU silicon since March 2026.,,
+innolight,Company,InnoLight (Zhongji Innolight),Optical transceiver maker,CN,300308.SZ,Leading 800G/1.6T transceiver volume supplier.,,
+eoptolink,Company,Eoptolink,Optical transceiver maker,CN,300502.SZ,800G/1.6T transceivers.,,
+coherent,Company,Coherent,Optical transceiver & laser maker,US,COHR,InP lasers through complete 1.6T modules.,,
+lumentum,Company,Lumentum,Optical component (laser) maker,US,LITE,Only volume supplier of 200G/lane EMLs (2026).,,
+astera_labs,Company,Astera Labs,Connectivity silicon,US,ALAB,80%+ share of PCIe/CXL retimers in AI servers.,,
+credo,Company,Credo Technology,Connectivity silicon,US,CRDO,"Active electrical cables, SerDes, DSPs.",,
+infineon,Company,Infineon Technologies,Power semiconductor maker,DE,IFX.DE,"Power MOSFETs, GaN/SiC; also a top automotive supplier.",,
+mps,Company,Monolithic Power Systems,Power semiconductor maker,US,MPWR,Power modules / VRMs for AI accelerators.,,
+rm_helium,RawMaterial,Helium (6N),Specialty gas,,,"Wafer cooling, carrier gas, leak detection; no substitute at leading edge.",,"{""price_series"": """", ""note"": ""Link price_series to a TimescaleDB series id""}"
+rm_neon,RawMaterial,Neon,Specialty gas,,,Buffer gas in DUV excimer lasers.,,"{""price_series"": """", ""note"": ""Link price_series to a TimescaleDB series id""}"
+rm_tin,RawMaterial,Tin,Metal,,,Droplet target for EUV laser-produced plasma.,,"{""price_series"": """", ""note"": ""Link price_series to a TimescaleDB series id""}"
+rm_hpq,RawMaterial,High-purity quartz,Industrial mineral,,,Fused-quartz crucibles for Czochralski ingot growth.,,"{""price_series"": """", ""note"": ""Link price_series to a TimescaleDB series id""}"
+rm_polysilicon_eg,RawMaterial,Electronic-grade polysilicon (11N),Refined material,,,Feedstock melted into single-crystal ingots.,,"{""price_series"": """", ""note"": ""Link price_series to a TimescaleDB series id""}"
+rm_gallium,RawMaterial,Gallium,Critical mineral,,,GaN power/RF devices.,,"{""price_series"": """", ""note"": ""Link price_series to a TimescaleDB series id""}"
+rm_germanium,RawMaterial,Germanium,Critical mineral,,,SiGe and Ge photodetectors in silicon photonics; fibre optics.,,"{""price_series"": """", ""note"": ""Link price_series to a TimescaleDB series id""}"
+rm_petro_solvents,RawMaterial,Naphtha-derived solvents & resist precursors,Petrochemical,,,Solvents and monomers for photoresists.,,"{""price_series"": """", ""note"": ""Link price_series to a TimescaleDB series id""}"
+fab_tsmc_18,Fab,"TSMC Fab 18 (Tainan, STSP)",front-end fab,TW,,"N5 / N3 GigaFab. 3nm production site; Rubin (N3) and MI355 (N3P) most likely here (inferred, not confirmed).",https://www.sec.gov/Archives/edgar/data/1046179/000156459022039856/tsm-6k_20221229.htm,"{""site_type"": ""front-end fab"", ""process"": ""N5 / N3 GigaFab""}"
+fab_tsmc_20,Fab,TSMC Fab 20 (Hsinchu Baoshan),front-end fab,TW,,N2 (20-25k wpm); P3/P4 for sub-2nm,https://www.trendforce.com/news/2026/02/23/news-tsmc-speeds-up-expansion-in-taiwan-up-to-10-fabs-reportedly-under-construction-or-starting-in-2026/,"{""site_type"": ""front-end fab"", ""process"": ""N2 (20-25k wpm); P3/P4 for sub-2nm""}"
+fab_tsmc_22,Fab,TSMC Fab 22 (Kaohsiung),front-end fab,TW,,"N2; P1 volume, P2 trial, P3-P5 by Q4 2027",https://www.trendforce.com/news/2026/02/23/news-tsmc-speeds-up-expansion-in-taiwan-up-to-10-fabs-reportedly-under-construction-or-starting-in-2026/,"{""site_type"": ""front-end fab"", ""process"": ""N2; P1 volume, P2 trial, P3-P5 by Q4 2027""}"
+fab_tsmc_25,Fab,"TSMC Fab 25 (Taichung, CTSP)",front-end fab (under construction),TW,,A14 (1.4nm) risk production late 2027,https://www.trendforce.com/news/2026/02/23/news-tsmc-speeds-up-expansion-in-taiwan-up-to-10-fabs-reportedly-under-construction-or-starting-in-2026/,"{""site_type"": ""front-end fab (under construction)"", ""process"": ""A14 (1.4nm) risk production late 2027""}"
+fab_tsmc_21_az,Fab,"TSMC Fab 21 (Phoenix, Arizona)",front-end fab,US,,P1 N4 operating; P2 N3 volume expected 2H27. Arizona wafers are still shipped to Taiwan for packaging.,https://tech-insider.org/tsmc-arizona-165-billion-expansion-gigafab-2026/,"{""site_type"": ""front-end fab"", ""process"": ""P1 N4 operating; P2 N3 volume expected 2H27""}"
+site_tsmc_ap5b,Fab,TSMC AP5B (Taichung),advanced packaging,TW,,CoWoS; completion 2026,https://www.trendforce.com/news/2026/02/23/news-tsmc-speeds-up-expansion-in-taiwan-up-to-10-fabs-reportedly-under-construction-or-starting-in-2026/,"{""site_type"": ""advanced packaging"", ""process"": ""CoWoS; completion 2026""}"
+site_tsmc_ap7,Fab,TSMC AP7 (Chiayi),advanced packaging,TW,,CoWoS / SoIC; P1 2026,https://www.trendforce.com/news/2026/02/23/news-tsmc-speeds-up-expansion-in-taiwan-up-to-10-fabs-reportedly-under-construction-or-starting-in-2026/,"{""site_type"": ""advanced packaging"", ""process"": ""CoWoS / SoIC; P1 2026""}"
+fab_skh_m15x,Fab,SK hynix M15X (Cheongju),front-end fab,KR,,1b DRAM for HBM4,https://www.trendforce.com/news/2025/12/12/news-sk-hynix-reportedly-places-hbm4-tc-bonder-order-with-asmpt-as-hanmi-hanwha-patent-clash-heats-up/,"{""site_type"": ""front-end fab"", ""process"": ""1b DRAM for HBM4""}"
+site_skh_indiana,Fab,SK hynix West Lafayette (Indiana),advanced packaging (planned),US,,HBM packaging,https://en.unibetter-ic.com/top-dram-manufacturers/,"{""site_type"": ""advanced packaging (planned)"", ""process"": ""HBM packaging""}"
+fab_samsung_pyeongtaek,Fab,Samsung Pyeongtaek campus,front-end fab,KR,,DRAM/HBM and foundry lines,,"{""site_type"": ""front-end fab"", ""process"": ""DRAM/HBM and foundry lines""}"
+fab_intel_52,Fab,"Intel Fab 52 (Chandler, Arizona)",front-end fab,US,,Intel 18A,,"{""site_type"": ""front-end fab"", ""process"": ""Intel 18A""}"
+site_globalwafers_sherman,Fab,GlobalWafers Sherman (Texas),wafer plant,US,,"300mm silicon wafers ($3.5bn, opened May 2025)",https://www.fortunebusinessinsights.com/silicon-wafers-market-116434,"{""site_type"": ""wafer plant"", ""process"": ""300mm silicon wafers ($3.5bn, opened May 2025)""}"
+site_amkor_arizona,Fab,Amkor Peoria (Arizona),advanced packaging (under construction),US,,Advanced packaging partner to TSMC Arizona,https://en.wikipedia.org/wiki/TSMC_Arizona,"{""site_type"": ""advanced packaging (under construction)"", ""process"": ""Advanced packaging partner to TSMC Arizona""}"
+ev_2026_helium_qatar,DisruptionEvent,Ras Laffan strikes & Strait of Hormuz closure — helium shortage,Disruption event,,,Qatar ~1/3 of helium; Korean fabs sourced ~2/3 from Qatar; TSMC holds 3-6 months inventory.,https://www.fusionww.com/insights/helium-shortage-2026,"{""date"": ""2026-03-18"", ""status"": ""ongoing"", ""severity"": ""high""}"
+ev_2026_naphtha,DisruptionEvent,Naphtha / petrochemical supply disruption hitting photoresist inputs,Disruption event,,,Resist makers warned Korean chipmakers of potential disruption.,https://www.mordorintelligence.com/industry-reports/photoresist-market,"{""date"": ""2026"", ""status"": ""ongoing"", ""severity"": ""medium""}"
+ev_2026_abf_shortage,DisruptionEvent,ABF substrate shortage and ~30% Ajinomoto ABF price hike,Disruption event,,,HPC substrates use >10x more ABF than PC substrates.,https://finance.biggo.com/news/ZU2KJZ4BpwxG186NIOsE,"{""date"": ""2026-05"", ""status"": ""ongoing"", ""severity"": ""high""}"
+ev_2026_cowos_gap,DisruptionEvent,CoWoS capacity gap (~20%) despite outsourcing to OSATs,Disruption event,,,Nvidia booked >50% of TSMC's 2026 CoWoS.,https://www.trendforce.com/news/2026/08/05/news-tsmc-reportedly-expands-outsourcing-of-key-cowos-front-end-step-to-osats-amid-rising-nvidia-asic-demand/,"{""date"": ""2026-08"", ""status"": ""ongoing"", ""severity"": ""high""}"
+ev_2026_hbm4_tight,DisruptionEvent,HBM4 supply tightness (SK hynix expects shortage to worsen in 2H26),Disruption event,,,Nvidia CEO publicly urged more HBM production in June 2026.,https://www.semicone.com/article-385.html,"{""date"": ""2026-06"", ""status"": ""ongoing"", ""severity"": ""high""}"
+ev_2026_ga_ge_expiry,DisruptionEvent,China Ga/Ge/Sb export-ban suspension to US expires,Disruption event,,,Suspension could lapse; licensing regime remains in place.,https://www.cnbc.com/2025/11/09/china-suspends-ban-on-exports-of-gallium-germanium-antimony-to-us.html,"{""date"": ""2026-11-27"", ""status"": ""upcoming"", ""severity"": ""medium""}"
+ev_2026_intel_18a,DisruptionEvent,Intel 18A yield issues may push Xeon 6+/Xeon 7 volume to 2027,Disruption event,,,Benefits AMD EPYC Venice share gains.,https://insights.trendforce.com/p/agentic-ai-cpu-gpu,"{""date"": ""2026-04"", ""status"": ""ongoing"", ""severity"": ""medium""}"
+ev_2026_asml_duv_bill,DisruptionEvent,Proposed US bill targeting ASML DUV sales to China,Disruption event,,,DUV ~one-fifth of ASML 2026 revenue (per source).,https://lightsource.ai/blog/asml-vs-china-chip-equipment-supply-chains,"{""date"": ""2026-06"", ""status"": ""proposed"", ""severity"": ""medium""}"
